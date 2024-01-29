@@ -1,4 +1,5 @@
 import pandas as pd
+import keyboard as keyboard
 
 from sklearn.preprocessing import StandardScaler
 from sklearn.ensemble import RandomForestRegressor
@@ -11,7 +12,7 @@ class main():
     df = pd.read_csv(file)
     
     # target feature 
-    target = input("target: ")
+    target = input("predict: ")
     
     # encode categorical features
     df = pd.get_dummies(df) 
@@ -22,11 +23,11 @@ class main():
 
     X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=7)
     
-    # StandardScaler to normalize numeric data 
-    scaler = StandardScaler() 
-    scaler.fit(X_train)
-    X_train = scaler.transform(X_train) # transform training data
-    X_test = scaler.transform(X_test) # transform test data
+    # # StandardScaler to normalize numeric data 
+    # scaler = StandardScaler() 
+    # scaler.fit(X_train)
+    # X_train = scaler.transform(X_train) # transform training data
+    # X_test = scaler.transform(X_test) # transform test data
 
     # the model
     rf = RandomForestRegressor(n_estimators = 100, random_state=7)
@@ -39,10 +40,15 @@ class main():
     # results['Predicted'] = y_pred
     
     print(results.head(100))
-
-    # accuracy
-    # print('Accuracy: {}'.format(rf.score(X_test, y_test)))
-
+    
+    # displays accuracy if space bar pressed 
+    while True:
+        keyboard.read_key()
+        if keyboard.is_pressed("space"):
+            # accuracy
+            print('Accuracy: {}'.format(rf.score(X_test, y_test)))
+        elif keyboard.is_pressed("esc"):
+            exit()
 
 if __name__ == '__main__':
     main()
@@ -51,6 +57,7 @@ if __name__ == '__main__':
 # some strong/weak accuracy
 # not too difficult task, can b identifiable 
 # continuous data
+
 # conceptual problem - how could we use an algorithm that takes/scrutinize human feedback if within precision (human overseer) 
 # algo accuracy vs not show
 # precision parameter --> expression of confidence commmunicated
