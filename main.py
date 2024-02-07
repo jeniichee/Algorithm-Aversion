@@ -63,13 +63,4 @@ class Main():
 if __name__ == '__main__':
     Main()
     
-# datasets fuilfil model req
-# some strong/weak accuracy
-# not too difficult task, can b identifiable 
-# continuous data
-
-# conceptual problem - how could we use an algorithm that takes/scrutinize human feedback if within precision (human overseer) 
-# algo accuracy vs not show
-# precision parameter --> expression of confidence commmunicated
-# decision experience gap, systematic difference, sampling -> algorithm shows uncertainity/failure + unfailure 
-# familiarize w/alfred + qualtrics 
+    
