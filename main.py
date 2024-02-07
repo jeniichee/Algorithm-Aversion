@@ -5,6 +5,7 @@ import os # accessing directory structure on macOS
 from sklearn.preprocessing import StandardScaler
 from sklearn.ensemble import RandomForestRegressor
 from sklearn.model_selection import train_test_split
+from scipy.stats import pearsonr
 
 class Main():
     
@@ -54,6 +55,10 @@ class Main():
     
     # accuracy
     print('Accuracy: {}'.format((rf.score(X_test, y_test))*100))
+    
+    # calculate the Pearson correlation coefficient
+    correlation_coefficient, _ = pearsonr(y_pred, y_test)
+    print(f"r: {correlation_coefficient}")
 
 if __name__ == '__main__':
     Main()
