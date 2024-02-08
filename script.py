@@ -9,18 +9,14 @@ import alfred3 as al
 # session expriation? 
 # show progress bar? 
 
-# YOU CAN DEFINE PAGE AS AN INSTANCE ORRRR A CLASSS OHHH
-
 exp = al.Experiment()
 
 exp += al.ForwardOnlySection(name="main")
-exp.main += al.Page(title="Welcome", name="Main_Page0") # fill w/page
-exp.Main_Page0 += al.TextEntry(leftlab="Enter something", name="t1") # fill page w/elements
 
-# set up each page 
+# Set up each page 
 @exp.setup
 def setup(exp):
-    exp.progress_bar = al.ProgressBar(show_text=True, bar_height="10px")
+    exp.progress_bar = al.ProgressBar(show_text=True)
 
 # Main section 
 @exp.member
@@ -28,12 +24,11 @@ class Main(al.ForwardOnlySection): pass
 
 # Main page 
 @exp.member(of_section="main")
-class Main_Page0(al.Page):
-    title = 'Welcome'
+class Main_Page(al.Page):
+    title = "Welcome"
     
     def on_exp_access(self):
-        self += al.TextEntry(toplab="Text entry", name="el1")
-    
+        self += al.TextEntry(toplab="Please estimate the length of the following river:", name="text1")
 
 if __name__ == "__main__":
     exp.run()
