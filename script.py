@@ -1,39 +1,46 @@
-import pandas as pd
-from sklearn.ensemble import RandomForestRegressor
-from sklearn.model_selection import train_test_split
 import alfred3 as al
 
-# TASKS 
-# randomly pick condition/go down a list/choosen by one of us? 
-# timer/timeout/minimal time participant can stay on page 
-# session expriation? 
-# show progress bar? 
-
 exp = al.Experiment()
+exp += al.ForwardOnlySection(name="main") 
 
-exp += al.ForwardOnlySection(name="main")
-
-# Set up each page 
+# setup 
 @exp.setup
 def setup(exp):
     exp.progress_bar = al.ProgressBar(show_text=True)
 
-# Main section 
-@exp.member
-class Main(al.ForwardOnlySection): pass 
 
-# Main page 
+# welcome page
 @exp.member(of_section="main")
-class Main_Page(al.Page):
+class Page0(al.Page):
     title = "Welcome"
-    
+
     def on_exp_access(self):
-        self += al.TextEntry(toplab="Please estimate the length of the following river:", name="text1")
+        self += al.Text("Welcome!", align="center")
+        self += al.Text("*Instructions*", align="center")  # instructions
+
+# database+task selection 
+@exp.member(of_section="main")
+class Page1(al.Page):
+    title = "File"
+
+    def on_exp_access(self):
+        self += al.FileUpload(name="file_upload", label="Choose CSV File")
+        self += al.TextEntry(toplab="Please enter the target feature:", name="target",  align="center")
+
+# task 
+@exp.member(of_section="main")
+class Page2(al.Page):
+    title = "Task"
+
+    def on_exp_access(self):
+        file_path = self.exp.values["databases/"+"file_upload"]
+        target = self.exp.values["target_entry"]
+        model.pred(file_path, target)
+        
+        self += al.TextEntry(toplab="Please enter your prediction:", name="prediction",  align="center")
+           
 
 if __name__ == "__main__":
     exp.run()
 
-## Main Page
-# welcome screen
-# instructions 
-## 
+## for web browsers except chrome: http://127.0.0.1:5000/start
