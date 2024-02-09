@@ -194,3 +194,176 @@
 2024-02-08 00:50:44,582 - exp.93997e086bc74bfa9a5824844c290eab - WARNING - experiment id=93997e086bc74bfa9a5824844c290eab - session id=sid-884f97abfd87465b9fe5284f32445e81 - label_top of 'text1' has changed from 'Text entry' to 'Please estimate the length of the following river:'. This introduces inconsistencies into the codebook. Do you have dynamic labels that do not match their elements' names? To change a label, increase the experiment version.
 2024-02-08 00:50:44,583 - exp.93997e086bc74bfa9a5824844c290eab - INFO - experiment id=93997e086bc74bfa9a5824844c290eab - session id=sid-884f97abfd87465b9fe5284f32445e81 - Exported codebook to data/codebook_1.0.csv.
 2024-02-08 00:50:44,585 - exp.93997e086bc74bfa9a5824844c290eab - INFO - experiment id=93997e086bc74bfa9a5824844c290eab - session id=sid-884f97abfd87465b9fe5284f32445e81 - Exported movement history to data/move_history.csv.
+2024-02-09 00:43:21,768 - exp.93997e086bc74bfa9a5824844c290eab.saving_agent.SavingAgentController - INFO - experiment id=93997e086bc74bfa9a5824844c290eab - session id=sid-6abff83ff0c7490896d108d806633cfb - Continuous SavingAgent AutoLocalSavingAgent(name='data', level=1, path='save/exp') added to experiment
+2024-02-09 00:43:21,774 - exp.93997e086bc74bfa9a5824844c290eab.saving_agent.SavingAgentController - INFO - experiment id=93997e086bc74bfa9a5824844c290eab - session id=sid-6abff83ff0c7490896d108d806633cfb - Continuous SavingAgent AutoLocalSavingAgent(name='local_unlinked', level=1, path='save/unlinked') added to experiment
+2024-02-09 00:43:21,776 - exp.93997e086bc74bfa9a5824844c290eab - WARNING - experiment id=93997e086bc74bfa9a5824844c290eab - session id=sid-6abff83ff0c7490896d108d806633cfb - The property ExperimentSession.session will be removed in the next major release.
+2024-02-09 00:43:21,777 - exp.93997e086bc74bfa9a5824844c290eab - WARNING - experiment id=93997e086bc74bfa9a5824844c290eab - session id=sid-6abff83ff0c7490896d108d806633cfb - The property ExperimentSession.session_status will be removed in the next major release.
+2024-02-09 00:43:21,777 - exp.93997e086bc74bfa9a5824844c290eab - WARNING - experiment id=93997e086bc74bfa9a5824844c290eab - session id=sid-6abff83ff0c7490896d108d806633cfb - The property ExperimentSession.session will be removed in the next major release.
+2024-02-09 00:43:21,777 - exp.93997e086bc74bfa9a5824844c290eab - WARNING - experiment id=93997e086bc74bfa9a5824844c290eab - session id=sid-6abff83ff0c7490896d108d806633cfb - The property ExperimentSession.session_status will be removed in the next major release.
+2024-02-09 00:43:21,778 - exp.93997e086bc74bfa9a5824844c290eab - WARNING - experiment id=93997e086bc74bfa9a5824844c290eab - session id=sid-6abff83ff0c7490896d108d806633cfb - The property ExperimentSession.session will be removed in the next major release.
+2024-02-09 00:43:21,778 - exp.93997e086bc74bfa9a5824844c290eab - WARNING - experiment id=93997e086bc74bfa9a5824844c290eab - session id=sid-6abff83ff0c7490896d108d806633cfb - The property ExperimentSession.session_status will be removed in the next major release.
+2024-02-09 00:43:21,779 - exp.93997e086bc74bfa9a5824844c290eab - WARNING - experiment id=93997e086bc74bfa9a5824844c290eab - session id=sid-6abff83ff0c7490896d108d806633cfb - The property ExperimentSession.session will be removed in the next major release.
+2024-02-09 00:43:21,779 - exp.93997e086bc74bfa9a5824844c290eab - WARNING - experiment id=93997e086bc74bfa9a5824844c290eab - session id=sid-6abff83ff0c7490896d108d806633cfb - The property ExperimentSession.session_status will be removed in the next major release.
+2024-02-09 00:43:21,780 - exp.93997e086bc74bfa9a5824844c290eab - WARNING - experiment id=93997e086bc74bfa9a5824844c290eab - session id=sid-6abff83ff0c7490896d108d806633cfb - The property ExperimentSession.session will be removed in the next major release.
+2024-02-09 00:43:21,780 - exp.93997e086bc74bfa9a5824844c290eab - WARNING - experiment id=93997e086bc74bfa9a5824844c290eab - session id=sid-6abff83ff0c7490896d108d806633cfb - The property ExperimentSession.session_status will be removed in the next major release.
+2024-02-09 00:43:21,802 - exp.93997e086bc74bfa9a5824844c290eab - WARNING - experiment id=93997e086bc74bfa9a5824844c290eab - session id=sid-6abff83ff0c7490896d108d806633cfb - The property ExperimentSession.session will be removed in the next major release.
+2024-02-09 00:43:21,802 - exp.93997e086bc74bfa9a5824844c290eab - WARNING - experiment id=93997e086bc74bfa9a5824844c290eab - session id=sid-6abff83ff0c7490896d108d806633cfb - The property ExperimentSession.session_status will be removed in the next major release.
+2024-02-09 00:43:21,803 - exp.93997e086bc74bfa9a5824844c290eab - INFO - experiment id=93997e086bc74bfa9a5824844c290eab - session id=sid-6abff83ff0c7490896d108d806633cfb - Alfred web experiment session initialized! Alfred version: 2.4.0, Experiment title: Example Title, Experiment version: 1.0
+2024-02-09 00:43:21,804 - exp.93997e086bc74bfa9a5824844c290eab - WARNING - experiment id=93997e086bc74bfa9a5824844c290eab - session id=sid-6abff83ff0c7490896d108d806633cfb - The property ExperimentSession.session will be removed in the next major release.
+2024-02-09 00:43:21,805 - exp.93997e086bc74bfa9a5824844c290eab - WARNING - experiment id=93997e086bc74bfa9a5824844c290eab - session id=sid-6abff83ff0c7490896d108d806633cfb - The property ExperimentSession.session_status will be removed in the next major release.
+2024-02-09 00:43:21,979 - exp.93997e086bc74bfa9a5824844c290eab.saving_agent.AutoLocalSavingAgent - INFO - experiment id=93997e086bc74bfa9a5824844c290eab - session id=sid-6abff83ff0c7490896d108d806633cfb - Running AutoLocalSavingAgent(name='data', level=1, path='save/exp') succeeded.
+2024-02-09 00:43:21,980 - exp.93997e086bc74bfa9a5824844c290eab - WARNING - experiment id=93997e086bc74bfa9a5824844c290eab - session id=sid-6abff83ff0c7490896d108d806633cfb - The property ExperimentSession.session will be removed in the next major release.
+2024-02-09 00:43:21,980 - exp.93997e086bc74bfa9a5824844c290eab - WARNING - experiment id=93997e086bc74bfa9a5824844c290eab - session id=sid-6abff83ff0c7490896d108d806633cfb - The property ExperimentSession.session_status will be removed in the next major release.
+2024-02-09 00:43:21,982 - exp.93997e086bc74bfa9a5824844c290eab - WARNING - experiment id=93997e086bc74bfa9a5824844c290eab - session id=sid-6abff83ff0c7490896d108d806633cfb - The property ExperimentSession.session will be removed in the next major release.
+2024-02-09 00:43:21,982 - exp.93997e086bc74bfa9a5824844c290eab - WARNING - experiment id=93997e086bc74bfa9a5824844c290eab - session id=sid-6abff83ff0c7490896d108d806633cfb - The property ExperimentSession.session_status will be removed in the next major release.
+2024-02-09 00:43:21,983 - exp.93997e086bc74bfa9a5824844c290eab - WARNING - experiment id=93997e086bc74bfa9a5824844c290eab - session id=sid-6abff83ff0c7490896d108d806633cfb - The property ExperimentSession.session will be removed in the next major release.
+2024-02-09 00:43:21,983 - exp.93997e086bc74bfa9a5824844c290eab - WARNING - experiment id=93997e086bc74bfa9a5824844c290eab - session id=sid-6abff83ff0c7490896d108d806633cfb - The property ExperimentSession.session_status will be removed in the next major release.
+2024-02-09 00:43:21,983 - exp.93997e086bc74bfa9a5824844c290eab - WARNING - experiment id=93997e086bc74bfa9a5824844c290eab - session id=sid-6abff83ff0c7490896d108d806633cfb - The property ExperimentSession.session will be removed in the next major release.
+2024-02-09 00:43:21,984 - exp.93997e086bc74bfa9a5824844c290eab - WARNING - experiment id=93997e086bc74bfa9a5824844c290eab - session id=sid-6abff83ff0c7490896d108d806633cfb - The property ExperimentSession.session_status will be removed in the next major release.
+2024-02-09 00:43:21,985 - exp.93997e086bc74bfa9a5824844c290eab - ERROR - experiment id=93997e086bc74bfa9a5824844c290eab - session id=sid-6abff83ff0c7490896d108d806633cfb - Exception during experiment generation.
+Traceback (most recent call last):
+  File "/Users/jennifercheung/anaconda3/lib/python3.10/site-packages/alfred3/localserver.py", line 65, in start
+    script.exp_session = script.exp.create_session(
+  File "/Users/jennifercheung/anaconda3/lib/python3.10/site-packages/alfred3/experiment.py", line 453, in create_session
+    exp_session += member
+  File "/Users/jennifercheung/anaconda3/lib/python3.10/site-packages/alfred3/experiment.py", line 1604, in __iadd__
+    self.append(other)
+  File "/Users/jennifercheung/anaconda3/lib/python3.10/site-packages/alfred3/experiment.py", line 1601, in append
+    self.root_section.members["_content"].append(item)
+  File "/Users/jennifercheung/anaconda3/lib/python3.10/site-packages/alfred3/section.py", line 463, in append
+    item.added_to_experiment(self.experiment)
+  File "/Users/jennifercheung/anaconda3/lib/python3.10/site-packages/alfred3/section.py", line 415, in added_to_experiment
+    self._update_members_recursively()
+  File "/Users/jennifercheung/anaconda3/lib/python3.10/site-packages/alfred3/section.py", line 427, in _update_members_recursively
+    self._update_members()
+  File "/Users/jennifercheung/anaconda3/lib/python3.10/site-packages/alfred3/section.py", line 421, in _update_members
+    member.added_to_experiment(self.exp)
+  File "/Users/jennifercheung/anaconda3/lib/python3.10/site-packages/alfred3/page.py", line 1029, in added_to_experiment
+    super().added_to_experiment(experiment)
+  File "/Users/jennifercheung/anaconda3/lib/python3.10/site-packages/alfred3/page.py", line 566, in added_to_experiment
+    self.on_exp_access()
+  File "/Users/jennifercheung/Desktop/Northeastern/Co-Op/coop/script.py", line 78, in on_exp_access
+    self += al.FileUpload(name="file_upload", label="Choose CSV File")
+AttributeError: module 'alfred3' has no attribute 'FileUpload'
+2024-02-09 00:48:21,315 - exp.93997e086bc74bfa9a5824844c290eab.saving_agent.SavingAgentController - INFO - experiment id=93997e086bc74bfa9a5824844c290eab - session id=sid-aed8f4a5bb3f4270baf42b599eeea91f - Continuous SavingAgent AutoLocalSavingAgent(name='data', level=1, path='save/exp') added to experiment
+2024-02-09 00:48:21,319 - exp.93997e086bc74bfa9a5824844c290eab.saving_agent.SavingAgentController - INFO - experiment id=93997e086bc74bfa9a5824844c290eab - session id=sid-aed8f4a5bb3f4270baf42b599eeea91f - Continuous SavingAgent AutoLocalSavingAgent(name='local_unlinked', level=1, path='save/unlinked') added to experiment
+2024-02-09 00:48:21,324 - exp.93997e086bc74bfa9a5824844c290eab - WARNING - experiment id=93997e086bc74bfa9a5824844c290eab - session id=sid-aed8f4a5bb3f4270baf42b599eeea91f - The property ExperimentSession.session will be removed in the next major release.
+2024-02-09 00:48:21,324 - exp.93997e086bc74bfa9a5824844c290eab - WARNING - experiment id=93997e086bc74bfa9a5824844c290eab - session id=sid-aed8f4a5bb3f4270baf42b599eeea91f - The property ExperimentSession.session_status will be removed in the next major release.
+2024-02-09 00:48:21,326 - exp.93997e086bc74bfa9a5824844c290eab - WARNING - experiment id=93997e086bc74bfa9a5824844c290eab - session id=sid-aed8f4a5bb3f4270baf42b599eeea91f - The property ExperimentSession.session will be removed in the next major release.
+2024-02-09 00:48:21,326 - exp.93997e086bc74bfa9a5824844c290eab - WARNING - experiment id=93997e086bc74bfa9a5824844c290eab - session id=sid-aed8f4a5bb3f4270baf42b599eeea91f - The property ExperimentSession.session_status will be removed in the next major release.
+2024-02-09 00:48:21,327 - exp.93997e086bc74bfa9a5824844c290eab - WARNING - experiment id=93997e086bc74bfa9a5824844c290eab - session id=sid-aed8f4a5bb3f4270baf42b599eeea91f - The property ExperimentSession.session will be removed in the next major release.
+2024-02-09 00:48:21,328 - exp.93997e086bc74bfa9a5824844c290eab - WARNING - experiment id=93997e086bc74bfa9a5824844c290eab - session id=sid-aed8f4a5bb3f4270baf42b599eeea91f - The property ExperimentSession.session_status will be removed in the next major release.
+2024-02-09 00:48:21,329 - exp.93997e086bc74bfa9a5824844c290eab - WARNING - experiment id=93997e086bc74bfa9a5824844c290eab - session id=sid-aed8f4a5bb3f4270baf42b599eeea91f - The property ExperimentSession.session will be removed in the next major release.
+2024-02-09 00:48:21,329 - exp.93997e086bc74bfa9a5824844c290eab - WARNING - experiment id=93997e086bc74bfa9a5824844c290eab - session id=sid-aed8f4a5bb3f4270baf42b599eeea91f - The property ExperimentSession.session_status will be removed in the next major release.
+2024-02-09 00:48:21,331 - exp.93997e086bc74bfa9a5824844c290eab - WARNING - experiment id=93997e086bc74bfa9a5824844c290eab - session id=sid-aed8f4a5bb3f4270baf42b599eeea91f - The property ExperimentSession.session will be removed in the next major release.
+2024-02-09 00:48:21,331 - exp.93997e086bc74bfa9a5824844c290eab - WARNING - experiment id=93997e086bc74bfa9a5824844c290eab - session id=sid-aed8f4a5bb3f4270baf42b599eeea91f - The property ExperimentSession.session_status will be removed in the next major release.
+2024-02-09 00:48:21,346 - exp.93997e086bc74bfa9a5824844c290eab - WARNING - experiment id=93997e086bc74bfa9a5824844c290eab - session id=sid-aed8f4a5bb3f4270baf42b599eeea91f - The property ExperimentSession.session will be removed in the next major release.
+2024-02-09 00:48:21,347 - exp.93997e086bc74bfa9a5824844c290eab - WARNING - experiment id=93997e086bc74bfa9a5824844c290eab - session id=sid-aed8f4a5bb3f4270baf42b599eeea91f - The property ExperimentSession.session_status will be removed in the next major release.
+2024-02-09 00:48:21,347 - exp.93997e086bc74bfa9a5824844c290eab - INFO - experiment id=93997e086bc74bfa9a5824844c290eab - session id=sid-aed8f4a5bb3f4270baf42b599eeea91f - Alfred web experiment session initialized! Alfred version: 2.4.0, Experiment title: Example Title, Experiment version: 1.0
+2024-02-09 00:48:21,347 - exp.93997e086bc74bfa9a5824844c290eab - WARNING - experiment id=93997e086bc74bfa9a5824844c290eab - session id=sid-aed8f4a5bb3f4270baf42b599eeea91f - The property ExperimentSession.session will be removed in the next major release.
+2024-02-09 00:48:21,348 - exp.93997e086bc74bfa9a5824844c290eab - WARNING - experiment id=93997e086bc74bfa9a5824844c290eab - session id=sid-aed8f4a5bb3f4270baf42b599eeea91f - The property ExperimentSession.session_status will be removed in the next major release.
+2024-02-09 00:48:21,821 - exp.93997e086bc74bfa9a5824844c290eab.saving_agent.AutoLocalSavingAgent - INFO - experiment id=93997e086bc74bfa9a5824844c290eab - session id=sid-aed8f4a5bb3f4270baf42b599eeea91f - Running AutoLocalSavingAgent(name='data', level=1, path='save/exp') succeeded.
+2024-02-09 00:48:21,823 - exp.93997e086bc74bfa9a5824844c290eab - WARNING - experiment id=93997e086bc74bfa9a5824844c290eab - session id=sid-aed8f4a5bb3f4270baf42b599eeea91f - The property ExperimentSession.session will be removed in the next major release.
+2024-02-09 00:48:21,823 - exp.93997e086bc74bfa9a5824844c290eab - WARNING - experiment id=93997e086bc74bfa9a5824844c290eab - session id=sid-aed8f4a5bb3f4270baf42b599eeea91f - The property ExperimentSession.session_status will be removed in the next major release.
+2024-02-09 00:48:21,827 - exp.93997e086bc74bfa9a5824844c290eab - WARNING - experiment id=93997e086bc74bfa9a5824844c290eab - session id=sid-aed8f4a5bb3f4270baf42b599eeea91f - The property ExperimentSession.session will be removed in the next major release.
+2024-02-09 00:48:21,827 - exp.93997e086bc74bfa9a5824844c290eab - WARNING - experiment id=93997e086bc74bfa9a5824844c290eab - session id=sid-aed8f4a5bb3f4270baf42b599eeea91f - The property ExperimentSession.session_status will be removed in the next major release.
+2024-02-09 00:48:21,829 - exp.93997e086bc74bfa9a5824844c290eab - WARNING - experiment id=93997e086bc74bfa9a5824844c290eab - session id=sid-aed8f4a5bb3f4270baf42b599eeea91f - The property ExperimentSession.session will be removed in the next major release.
+2024-02-09 00:48:21,829 - exp.93997e086bc74bfa9a5824844c290eab - WARNING - experiment id=93997e086bc74bfa9a5824844c290eab - session id=sid-aed8f4a5bb3f4270baf42b599eeea91f - The property ExperimentSession.session_status will be removed in the next major release.
+2024-02-09 00:48:21,831 - exp.93997e086bc74bfa9a5824844c290eab - WARNING - experiment id=93997e086bc74bfa9a5824844c290eab - session id=sid-aed8f4a5bb3f4270baf42b599eeea91f - The property ExperimentSession.session will be removed in the next major release.
+2024-02-09 00:48:21,831 - exp.93997e086bc74bfa9a5824844c290eab - WARNING - experiment id=93997e086bc74bfa9a5824844c290eab - session id=sid-aed8f4a5bb3f4270baf42b599eeea91f - The property ExperimentSession.session_status will be removed in the next major release.
+2024-02-09 00:48:21,833 - exp.93997e086bc74bfa9a5824844c290eab - WARNING - experiment id=93997e086bc74bfa9a5824844c290eab - session id=sid-aed8f4a5bb3f4270baf42b599eeea91f - The property ExperimentSession.session will be removed in the next major release.
+2024-02-09 00:48:21,833 - exp.93997e086bc74bfa9a5824844c290eab - WARNING - experiment id=93997e086bc74bfa9a5824844c290eab - session id=sid-aed8f4a5bb3f4270baf42b599eeea91f - The property ExperimentSession.session_status will be removed in the next major release.
+2024-02-09 00:48:21,834 - exp.93997e086bc74bfa9a5824844c290eab - WARNING - experiment id=93997e086bc74bfa9a5824844c290eab - session id=sid-aed8f4a5bb3f4270baf42b599eeea91f - The property ExperimentSession.session will be removed in the next major release.
+2024-02-09 00:48:21,834 - exp.93997e086bc74bfa9a5824844c290eab - WARNING - experiment id=93997e086bc74bfa9a5824844c290eab - session id=sid-aed8f4a5bb3f4270baf42b599eeea91f - The property ExperimentSession.session_status will be removed in the next major release.
+2024-02-09 00:48:21,839 - exp.93997e086bc74bfa9a5824844c290eab - WARNING - experiment id=93997e086bc74bfa9a5824844c290eab - session id=sid-aed8f4a5bb3f4270baf42b599eeea91f - The property ExperimentSession.session will be removed in the next major release.
+2024-02-09 00:48:21,839 - exp.93997e086bc74bfa9a5824844c290eab - WARNING - experiment id=93997e086bc74bfa9a5824844c290eab - session id=sid-aed8f4a5bb3f4270baf42b599eeea91f - The property ExperimentSession.session_status will be removed in the next major release.
+2024-02-09 00:48:21,840 - exp.93997e086bc74bfa9a5824844c290eab - WARNING - experiment id=93997e086bc74bfa9a5824844c290eab - session id=sid-aed8f4a5bb3f4270baf42b599eeea91f - The property ExperimentSession.session will be removed in the next major release.
+2024-02-09 00:48:21,840 - exp.93997e086bc74bfa9a5824844c290eab - WARNING - experiment id=93997e086bc74bfa9a5824844c290eab - session id=sid-aed8f4a5bb3f4270baf42b599eeea91f - The property ExperimentSession.session_status will be removed in the next major release.
+2024-02-09 00:48:21,841 - exp.93997e086bc74bfa9a5824844c290eab - WARNING - experiment id=93997e086bc74bfa9a5824844c290eab - session id=sid-aed8f4a5bb3f4270baf42b599eeea91f - The property ExperimentSession.session will be removed in the next major release.
+2024-02-09 00:48:21,841 - exp.93997e086bc74bfa9a5824844c290eab - WARNING - experiment id=93997e086bc74bfa9a5824844c290eab - session id=sid-aed8f4a5bb3f4270baf42b599eeea91f - The property ExperimentSession.session_status will be removed in the next major release.
+2024-02-09 00:48:21,842 - exp.93997e086bc74bfa9a5824844c290eab - ERROR - experiment id=93997e086bc74bfa9a5824844c290eab - session id=sid-aed8f4a5bb3f4270baf42b599eeea91f - Exception during experiment generation.
+Traceback (most recent call last):
+  File "/Users/jennifercheung/anaconda3/lib/python3.10/site-packages/alfred3/localserver.py", line 65, in start
+    script.exp_session = script.exp.create_session(
+  File "/Users/jennifercheung/anaconda3/lib/python3.10/site-packages/alfred3/experiment.py", line 453, in create_session
+    exp_session += member
+  File "/Users/jennifercheung/anaconda3/lib/python3.10/site-packages/alfred3/experiment.py", line 1604, in __iadd__
+    self.append(other)
+  File "/Users/jennifercheung/anaconda3/lib/python3.10/site-packages/alfred3/experiment.py", line 1601, in append
+    self.root_section.members["_content"].append(item)
+  File "/Users/jennifercheung/anaconda3/lib/python3.10/site-packages/alfred3/section.py", line 463, in append
+    item.added_to_experiment(self.experiment)
+  File "/Users/jennifercheung/anaconda3/lib/python3.10/site-packages/alfred3/section.py", line 415, in added_to_experiment
+    self._update_members_recursively()
+  File "/Users/jennifercheung/anaconda3/lib/python3.10/site-packages/alfred3/section.py", line 427, in _update_members_recursively
+    self._update_members()
+  File "/Users/jennifercheung/anaconda3/lib/python3.10/site-packages/alfred3/section.py", line 421, in _update_members
+    member.added_to_experiment(self.exp)
+  File "/Users/jennifercheung/anaconda3/lib/python3.10/site-packages/alfred3/page.py", line 1029, in added_to_experiment
+    super().added_to_experiment(experiment)
+  File "/Users/jennifercheung/anaconda3/lib/python3.10/site-packages/alfred3/page.py", line 566, in added_to_experiment
+    self.on_exp_access()
+  File "/Users/jennifercheung/Desktop/Northeastern/Co-Op/coop/script.py", line 87, in on_exp_access
+    file_path = self.exp.values["databases/"+"file"]
+KeyError: 'databases/file'
+2024-02-09 00:48:50,107 - exp.93997e086bc74bfa9a5824844c290eab.saving_agent.SavingAgentController - INFO - experiment id=93997e086bc74bfa9a5824844c290eab - session id=sid-ad6420e3fbd6482c9ad85636181a74dc - Continuous SavingAgent AutoLocalSavingAgent(name='data', level=1, path='save/exp') added to experiment
+2024-02-09 00:48:50,109 - exp.93997e086bc74bfa9a5824844c290eab.saving_agent.SavingAgentController - INFO - experiment id=93997e086bc74bfa9a5824844c290eab - session id=sid-ad6420e3fbd6482c9ad85636181a74dc - Continuous SavingAgent AutoLocalSavingAgent(name='local_unlinked', level=1, path='save/unlinked') added to experiment
+2024-02-09 00:48:50,114 - exp.93997e086bc74bfa9a5824844c290eab - WARNING - experiment id=93997e086bc74bfa9a5824844c290eab - session id=sid-ad6420e3fbd6482c9ad85636181a74dc - The property ExperimentSession.session will be removed in the next major release.
+2024-02-09 00:48:50,115 - exp.93997e086bc74bfa9a5824844c290eab - WARNING - experiment id=93997e086bc74bfa9a5824844c290eab - session id=sid-ad6420e3fbd6482c9ad85636181a74dc - The property ExperimentSession.session_status will be removed in the next major release.
+2024-02-09 00:48:50,116 - exp.93997e086bc74bfa9a5824844c290eab - WARNING - experiment id=93997e086bc74bfa9a5824844c290eab - session id=sid-ad6420e3fbd6482c9ad85636181a74dc - The property ExperimentSession.session will be removed in the next major release.
+2024-02-09 00:48:50,116 - exp.93997e086bc74bfa9a5824844c290eab - WARNING - experiment id=93997e086bc74bfa9a5824844c290eab - session id=sid-ad6420e3fbd6482c9ad85636181a74dc - The property ExperimentSession.session_status will be removed in the next major release.
+2024-02-09 00:48:50,121 - exp.93997e086bc74bfa9a5824844c290eab - WARNING - experiment id=93997e086bc74bfa9a5824844c290eab - session id=sid-ad6420e3fbd6482c9ad85636181a74dc - The property ExperimentSession.session will be removed in the next major release.
+2024-02-09 00:48:50,121 - exp.93997e086bc74bfa9a5824844c290eab - WARNING - experiment id=93997e086bc74bfa9a5824844c290eab - session id=sid-ad6420e3fbd6482c9ad85636181a74dc - The property ExperimentSession.session_status will be removed in the next major release.
+2024-02-09 00:48:50,123 - exp.93997e086bc74bfa9a5824844c290eab - WARNING - experiment id=93997e086bc74bfa9a5824844c290eab - session id=sid-ad6420e3fbd6482c9ad85636181a74dc - The property ExperimentSession.session will be removed in the next major release.
+2024-02-09 00:48:50,123 - exp.93997e086bc74bfa9a5824844c290eab - WARNING - experiment id=93997e086bc74bfa9a5824844c290eab - session id=sid-ad6420e3fbd6482c9ad85636181a74dc - The property ExperimentSession.session_status will be removed in the next major release.
+2024-02-09 00:48:50,124 - exp.93997e086bc74bfa9a5824844c290eab - WARNING - experiment id=93997e086bc74bfa9a5824844c290eab - session id=sid-ad6420e3fbd6482c9ad85636181a74dc - The property ExperimentSession.session will be removed in the next major release.
+2024-02-09 00:48:50,124 - exp.93997e086bc74bfa9a5824844c290eab - WARNING - experiment id=93997e086bc74bfa9a5824844c290eab - session id=sid-ad6420e3fbd6482c9ad85636181a74dc - The property ExperimentSession.session_status will be removed in the next major release.
+2024-02-09 00:48:50,138 - exp.93997e086bc74bfa9a5824844c290eab - WARNING - experiment id=93997e086bc74bfa9a5824844c290eab - session id=sid-ad6420e3fbd6482c9ad85636181a74dc - The property ExperimentSession.session will be removed in the next major release.
+2024-02-09 00:48:50,138 - exp.93997e086bc74bfa9a5824844c290eab - WARNING - experiment id=93997e086bc74bfa9a5824844c290eab - session id=sid-ad6420e3fbd6482c9ad85636181a74dc - The property ExperimentSession.session_status will be removed in the next major release.
+2024-02-09 00:48:50,139 - exp.93997e086bc74bfa9a5824844c290eab - INFO - experiment id=93997e086bc74bfa9a5824844c290eab - session id=sid-ad6420e3fbd6482c9ad85636181a74dc - Alfred web experiment session initialized! Alfred version: 2.4.0, Experiment title: Example Title, Experiment version: 1.0
+2024-02-09 00:48:50,139 - exp.93997e086bc74bfa9a5824844c290eab - WARNING - experiment id=93997e086bc74bfa9a5824844c290eab - session id=sid-ad6420e3fbd6482c9ad85636181a74dc - The property ExperimentSession.session will be removed in the next major release.
+2024-02-09 00:48:50,139 - exp.93997e086bc74bfa9a5824844c290eab - WARNING - experiment id=93997e086bc74bfa9a5824844c290eab - session id=sid-ad6420e3fbd6482c9ad85636181a74dc - The property ExperimentSession.session_status will be removed in the next major release.
+2024-02-09 00:48:50,898 - exp.93997e086bc74bfa9a5824844c290eab.saving_agent.AutoLocalSavingAgent - INFO - experiment id=93997e086bc74bfa9a5824844c290eab - session id=sid-ad6420e3fbd6482c9ad85636181a74dc - Running AutoLocalSavingAgent(name='data', level=1, path='save/exp') succeeded.
+2024-02-09 00:48:50,900 - exp.93997e086bc74bfa9a5824844c290eab - WARNING - experiment id=93997e086bc74bfa9a5824844c290eab - session id=sid-ad6420e3fbd6482c9ad85636181a74dc - The property ExperimentSession.session will be removed in the next major release.
+2024-02-09 00:48:50,900 - exp.93997e086bc74bfa9a5824844c290eab - WARNING - experiment id=93997e086bc74bfa9a5824844c290eab - session id=sid-ad6420e3fbd6482c9ad85636181a74dc - The property ExperimentSession.session_status will be removed in the next major release.
+2024-02-09 00:48:50,902 - exp.93997e086bc74bfa9a5824844c290eab - WARNING - experiment id=93997e086bc74bfa9a5824844c290eab - session id=sid-ad6420e3fbd6482c9ad85636181a74dc - The property ExperimentSession.session will be removed in the next major release.
+2024-02-09 00:48:50,903 - exp.93997e086bc74bfa9a5824844c290eab - WARNING - experiment id=93997e086bc74bfa9a5824844c290eab - session id=sid-ad6420e3fbd6482c9ad85636181a74dc - The property ExperimentSession.session_status will be removed in the next major release.
+2024-02-09 00:48:50,903 - exp.93997e086bc74bfa9a5824844c290eab - WARNING - experiment id=93997e086bc74bfa9a5824844c290eab - session id=sid-ad6420e3fbd6482c9ad85636181a74dc - The property ExperimentSession.session will be removed in the next major release.
+2024-02-09 00:48:50,903 - exp.93997e086bc74bfa9a5824844c290eab - WARNING - experiment id=93997e086bc74bfa9a5824844c290eab - session id=sid-ad6420e3fbd6482c9ad85636181a74dc - The property ExperimentSession.session_status will be removed in the next major release.
+2024-02-09 00:48:50,904 - exp.93997e086bc74bfa9a5824844c290eab - WARNING - experiment id=93997e086bc74bfa9a5824844c290eab - session id=sid-ad6420e3fbd6482c9ad85636181a74dc - The property ExperimentSession.session will be removed in the next major release.
+2024-02-09 00:48:50,904 - exp.93997e086bc74bfa9a5824844c290eab - WARNING - experiment id=93997e086bc74bfa9a5824844c290eab - session id=sid-ad6420e3fbd6482c9ad85636181a74dc - The property ExperimentSession.session_status will be removed in the next major release.
+2024-02-09 00:48:50,906 - exp.93997e086bc74bfa9a5824844c290eab - WARNING - experiment id=93997e086bc74bfa9a5824844c290eab - session id=sid-ad6420e3fbd6482c9ad85636181a74dc - The property ExperimentSession.session will be removed in the next major release.
+2024-02-09 00:48:50,906 - exp.93997e086bc74bfa9a5824844c290eab - WARNING - experiment id=93997e086bc74bfa9a5824844c290eab - session id=sid-ad6420e3fbd6482c9ad85636181a74dc - The property ExperimentSession.session_status will be removed in the next major release.
+2024-02-09 00:48:50,907 - exp.93997e086bc74bfa9a5824844c290eab - WARNING - experiment id=93997e086bc74bfa9a5824844c290eab - session id=sid-ad6420e3fbd6482c9ad85636181a74dc - The property ExperimentSession.session will be removed in the next major release.
+2024-02-09 00:48:50,908 - exp.93997e086bc74bfa9a5824844c290eab - WARNING - experiment id=93997e086bc74bfa9a5824844c290eab - session id=sid-ad6420e3fbd6482c9ad85636181a74dc - The property ExperimentSession.session_status will be removed in the next major release.
+2024-02-09 00:48:50,913 - exp.93997e086bc74bfa9a5824844c290eab - WARNING - experiment id=93997e086bc74bfa9a5824844c290eab - session id=sid-ad6420e3fbd6482c9ad85636181a74dc - The property ExperimentSession.session will be removed in the next major release.
+2024-02-09 00:48:50,914 - exp.93997e086bc74bfa9a5824844c290eab - WARNING - experiment id=93997e086bc74bfa9a5824844c290eab - session id=sid-ad6420e3fbd6482c9ad85636181a74dc - The property ExperimentSession.session_status will be removed in the next major release.
+2024-02-09 00:48:50,915 - exp.93997e086bc74bfa9a5824844c290eab - WARNING - experiment id=93997e086bc74bfa9a5824844c290eab - session id=sid-ad6420e3fbd6482c9ad85636181a74dc - The property ExperimentSession.session will be removed in the next major release.
+2024-02-09 00:48:50,915 - exp.93997e086bc74bfa9a5824844c290eab - WARNING - experiment id=93997e086bc74bfa9a5824844c290eab - session id=sid-ad6420e3fbd6482c9ad85636181a74dc - The property ExperimentSession.session_status will be removed in the next major release.
+2024-02-09 00:48:50,916 - exp.93997e086bc74bfa9a5824844c290eab - WARNING - experiment id=93997e086bc74bfa9a5824844c290eab - session id=sid-ad6420e3fbd6482c9ad85636181a74dc - The property ExperimentSession.session will be removed in the next major release.
+2024-02-09 00:48:50,916 - exp.93997e086bc74bfa9a5824844c290eab - WARNING - experiment id=93997e086bc74bfa9a5824844c290eab - session id=sid-ad6420e3fbd6482c9ad85636181a74dc - The property ExperimentSession.session_status will be removed in the next major release.
+2024-02-09 00:48:50,918 - exp.93997e086bc74bfa9a5824844c290eab - ERROR - experiment id=93997e086bc74bfa9a5824844c290eab - session id=sid-ad6420e3fbd6482c9ad85636181a74dc - Exception during experiment generation.
+Traceback (most recent call last):
+  File "/Users/jennifercheung/anaconda3/lib/python3.10/site-packages/alfred3/localserver.py", line 65, in start
+    script.exp_session = script.exp.create_session(
+  File "/Users/jennifercheung/anaconda3/lib/python3.10/site-packages/alfred3/experiment.py", line 453, in create_session
+    exp_session += member
+  File "/Users/jennifercheung/anaconda3/lib/python3.10/site-packages/alfred3/experiment.py", line 1604, in __iadd__
+    self.append(other)
+  File "/Users/jennifercheung/anaconda3/lib/python3.10/site-packages/alfred3/experiment.py", line 1601, in append
+    self.root_section.members["_content"].append(item)
+  File "/Users/jennifercheung/anaconda3/lib/python3.10/site-packages/alfred3/section.py", line 463, in append
+    item.added_to_experiment(self.experiment)
+  File "/Users/jennifercheung/anaconda3/lib/python3.10/site-packages/alfred3/section.py", line 415, in added_to_experiment
+    self._update_members_recursively()
+  File "/Users/jennifercheung/anaconda3/lib/python3.10/site-packages/alfred3/section.py", line 427, in _update_members_recursively
+    self._update_members()
+  File "/Users/jennifercheung/anaconda3/lib/python3.10/site-packages/alfred3/section.py", line 421, in _update_members
+    member.added_to_experiment(self.exp)
+  File "/Users/jennifercheung/anaconda3/lib/python3.10/site-packages/alfred3/page.py", line 1029, in added_to_experiment
+    super().added_to_experiment(experiment)
+  File "/Users/jennifercheung/anaconda3/lib/python3.10/site-packages/alfred3/page.py", line 566, in added_to_experiment
+    self.on_exp_access()
+  File "/Users/jennifercheung/Desktop/Northeastern/Co-Op/coop/script.py", line 87, in on_exp_access
+    file_path = self.exp.values["file"]
+KeyError: 'file'
