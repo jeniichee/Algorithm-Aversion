@@ -7,11 +7,10 @@ from sklearn.model_selection import train_test_split
 from scipy.stats import pearsonr
 
 exp = al.Experiment()
-exp += al.ForwardOnlySection(name="main") 
+exp += al.ForwardOnlySection(name="main")
 
-# model 
+# model
 def pred(file, target):
-
     # load file 
     df = pd.read_csv("databases/"+file)
     
@@ -54,11 +53,10 @@ def pred(file, target):
     correlation_coefficient, _ = pearsonr(y_pred, y_test)
     print(f"r: {correlation_coefficient}")
 
-# setup 
+# setup
 @exp.setup
 def setup(exp):
     exp.progress_bar = al.ProgressBar(show_text=True)
-
 
 # welcome page
 @exp.member(of_section="main")
@@ -69,27 +67,26 @@ class Page0(al.Page):
         self += al.Text("Welcome!", align="center")
         self += al.Text("*Instructions*", align="center")  # instructions
 
-# database+task selection 
+# database+task selection
 @exp.member(of_section="main")
 class Page1(al.Page):
     title = "File"
 
     def on_exp_access(self):
-        self += al.TextEntry(toplab="Please enter the file name:", name="file",  align="center")
-        self += al.TextEntry(toplab="Please enter the target feature:", name="target",  align="center")
+        self += al.TextEntry(toplab="Please enter the file name:", name="file")
+        self += al.TextEntry(toplab="Please enter the target feature:", name="target")
 
-# task 
+# task
 @exp.member(of_section="main")
 class Page2(al.Page):
     title = "Task"
 
     def on_exp_access(self):
-        file_path = 
-        target = 
-        pred(file_path, target)
-        
-        self += al.TextEntry(toplab="Please enter your prediction:", name="prediction",  align="center")
-           
+        # file_path = self.exp.values["file"]
+        # target = self.exp.values["target"]
+        # preds = pred(file_path, target)
+        # print(preds)
+        self += al.TextEntry(toplab="Please enter your prediction:", name="prediction", align="center")
 
 if __name__ == "__main__":
     exp.run()
