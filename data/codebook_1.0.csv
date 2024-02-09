@@ -2,4 +2,6 @@ exp_title;exp_author;exp_version;alfred_version;element_type;name;label_top;labe
 Example Title;Authors;1.0;2.4.0;TextEntry;text1;Please estimate the length of the following river:;;;;False;;;;;;_content.main.Page1;Welcome;False
 Example Title;Authors;1.0;2.4.0;TextEntry;file;Please enter the file name:;;;;True;;;;;;_content.main.Page1;File;False
 Example Title;Authors;1.0;2.4.0;TextEntry;target;Please enter the target feature:;;;;True;;;;;;_content.main.Page1;File;False
-Example Title;Authors;1.0;2.4.0;TextEntry;prediction;Please enter your prediction:;;;;True;;;;;;_content.main.Page2;Task;False
+Example Title;Authors;1.0;2.4.0;TextEntry;prediction;Please enter your prediction:;;;;True;;;;;;_content.main.Page2;;False
+Example Title;Authors;1.0;2.4.0;TextEntry;t1;Please enter the file name:;;;;True;;;;;;_content.main.page1;;False
+Example Title;Authors;1.0;2.4.0;TextEntry;t2;Please enter the target feature:;;;;True;;;;;;_content.main.page1;;False
