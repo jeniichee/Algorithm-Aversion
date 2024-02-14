@@ -76,11 +76,12 @@ class Page2(al.Page):
         input_on_page2 = self.exp.values["t2"]
         preds, accuracy, correlation_coefficient = pred(input_on_page1, input_on_page2)
         
-        df = preds.to_string(index=False)
+        # df = preds.to_string(index=False)
+        df = preds
         
-        self += al.Text(df)
+        # self += al.MatPlot
         self += al.Text(f"Accuracy: {accuracy:.2f}%")
-        self += al.Text(f"Pearson correlation coefficient: {correlation_coefficient:.4f}")
+        self += al.Text(f"Pearson correlation coefficient: {correlation_coefficient:.2f}")
          
         self += al.TextEntry(toplab="Please enter your prediction:", name="prediction", align="center")
 
@@ -88,5 +89,29 @@ if __name__ == "__main__":
     exp.run()
 
 ## for web browsers except chrome: http://127.0.0.1:5000/start
-## trying to figure out admin mode 
+## admin mode 
+## displaying the data as a table 
 ## retrieving data from sessions 
+## need to generate prediction interval
+# - scikit-learn's RandomForestRegressor doesn't inherently provide probability estimates like a classifier
+# - if using a classifier, could obtain probability estimates for each class using the predict_proba method. 
+# - in regression, typically get a continuous output, and the level of confidence is often measured by the model's accuracy or other regression metrics.
+# - R can easily produce prediction intervals for the predictions of a random forests.
+# - need to make some strong assumptions about the distribution of the individual points 
+# - around the predicted means, then you could take the predictions from the individual trees
+# - then generate a random value from the assumed distribution with that center. 
+
+
+## database Pearson r values
+# insurance.csv = 0.9203913336104259
+# bank = 0.941011708655843
+# BMI = 0.9814944355434478
+# concrete = 0.960403322918504
+# exam = 0.8564969012993616
+# happy = 0.9999791281834894
+# insurance = 0.9203913336104259
+# placement = 0.8432494857338155
+# red wine = 0.7211983393453991
+# star type = 0.9999321798727429
+# tip = 0.7569161669495375
+
