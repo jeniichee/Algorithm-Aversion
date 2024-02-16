@@ -4,4 +4,5 @@ Example Title;Authors;1.0;2.4.0;TextEntry;file;Please enter the file name:;;;;Tr
 Example Title;Authors;1.0;2.4.0;TextEntry;target;Please enter the target feature:;;;;True;;;;;;_content.main.Page1;File;False
 Example Title;Authors;1.0;2.4.0;TextEntry;prediction;Please enter your prediction:;;;;True;;;;;;_content.main.Page2;;False
 Example Title;Authors;1.0;2.4.0;TextEntry;t1;Please enter the file name:;;;;True;;;;;;_content.main.page1;;False
-Example Title;Authors;1.0;2.4.0;TextEntry;t2;Please enter the target feature:;;;;True;;;;;;_content.main.page1;;False
+Example Title;Authors;1.0;2.4.0;TextEntry;t2;;Please enter the target feature:;;;True;;;;;;_content.StartSection.start_pg;;False
+Example Title;Authors;1.0;2.4.0;TextEntry;uploaded_file;;Please enter the file name:;;;True;;;;;;_content.StartSection.start_pg;;False

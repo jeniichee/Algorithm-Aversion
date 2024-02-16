@@ -8,11 +8,13 @@ from sklearn.model_selection import train_test_split
 from scipy.stats import pearsonr
 from alfred3 import admin
 
+exp = al.Experiment()
 
 # model
-def pred(file, target):
+def pred(f, target):
+    
     # load file 
-    df = pd.read_csv("databases/"+file)
+    df = pd.read_csv("databases/"+f)
     
     # encode categorical features
     df = pd.get_dummies(df) 
@@ -52,67 +54,63 @@ def pred(file, target):
     correlation_coefficient, _ = pearsonr(y_pred, y_test)
     
     return df_out.head(100), accuracy, correlation_coefficient
-    
-exp = al.Experiment()
-exp += al.ForwardOnlySection(name="main")
 
 # setup
 @exp.setup
 def setup(exp):
     exp.progress_bar = al.ProgressBar(show_text=True)
 
+# start section 
+# TODO: turn into admin mode 
+exp += al.ForwardOnlySection(name="StartSection")
+exp.StartSection += al.Page(name="start_pg")
+exp.StartSection.start_pg += al.TextEntry(leftlab="Please enter the file name:", name="uploaded_file")
+exp.StartSection.start_pg += al.TextEntry(leftlab="Please enter the target feature:", name="t2")
 
-exp.main += al.Page(name="page0")
-exp.main.page0 += al.Text("Welcome!", align="center")
-exp.main.page0 += al.Text("*Instructions*", align="center")
+# TODO: consent section 
+exp += al.ForwardOnlySection(name="consent")
+exp.consent += al.Page(name="pdf")
 
-
-
-
-## turn into admin page/behind the scenes 
-@exp.member(admin=True)
-class Page1(admin.SpectatorPage):
-    def on_exp_access(self):
-        self += al.TextEntry(toplab="Please enter the file name:", name="uploaded_file")
-        self += al.TextEntry(toplab="Please enter the target feature:", name="t2")
-        
+# instructions section 
+exp += al.ForwardOnlySection(name="main")
+exp.main += al.Page(name="welcome_pg")
+exp.main.welcome_pg += al.Text("Welcome!", align="center")
+exp.main.welcome_pg += al.Text("*Instructions*", align="center")
 
 @exp.member(of_section="main")
 class Page2(al.Page):
 
     def on_first_show(self):
-        
         uploaded_file = self.exp.values["uploaded_file"]
         target_feature = self.exp.values["t2"]
         preds, accuracy, correlation_coefficient = pred(uploaded_file, target_feature)
         
-        # need to make the table fit 
+        # TODO: make the table fit the frame 
+        # html_string = """
+        
+        # """
+        
+        # assert html_string == preds.to_html()
         html_element = al.Html(html=preds.to_html())
-        self += html_element
+        self += html_element.height
     
         self += al.Text(f"Accuracy: {accuracy:.2f}%")
         self += al.Text(f"Pearson correlation coefficient: {correlation_coefficient:.2f}")
         self += al.TextEntry(toplab="Please enter your prediction:", name="prediction", align="center")
         
+# TODO: final section of the experiment - feedback, payment, and debriefing
+@exp.member
+class SectionFinale(al.ForwardOnlySection):
+    
+    def on_exp_access(self): 
 
-        
+        self += al.Page(title = 'Feedback', name = 'feedback')
+        self += al.TextEntry(toplab="Feedback?")
 
 if __name__ == "__main__":
     exp.run()
 
-## for web browsers except chrome: http://127.0.0.1:5000/start
-## admin mode 
-## displaying the data as a table 
-## retrieving data from sessions 
-## need to generate prediction interval
-# - scikit-learn's RandomForestRegressor doesn't inherently provide probability estimates like a classifier
-# - if using a classifier, could obtain probability estimates for each class using the predict_proba method. 
-# - in regression, typically get a continuous output, and the level of confidence is often measured by the model's accuracy or other regression metrics.
-# - R can easily produce prediction intervals for the predictions of a random forests.
-# - need to make some strong assumptions about the distribution of the individual points 
-# - around the predicted means, then you could take the predictions from the individual trees
-# - then generate a random value from the assumed distribution with that center. 
-
+# for web browsers except chrome: http://127.0.0.1:5000/start
 
 ## database Pearson r values
 # insurance.csv = 0.9203913336104259
@@ -126,5 +124,3 @@ if __name__ == "__main__":
 # red wine = 0.7211983393453991
 # star type = 0.9999321798727429
 # tip = 0.7569161669495375
-
-# go from admin page -> normal page 
