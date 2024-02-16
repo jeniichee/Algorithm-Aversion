@@ -3,10 +3,10 @@ import pandas as pd
 import matplotlib.pyplot as plt
 
 from sklearn.preprocessing import StandardScaler
-from alfred3.admin import SpectatorPage
 from sklearn.ensemble import RandomForestRegressor
 from sklearn.model_selection import train_test_split
 from scipy.stats import pearsonr
+from alfred3 import admin
 
 
 # model
@@ -60,32 +60,40 @@ exp += al.ForwardOnlySection(name="main")
 @exp.setup
 def setup(exp):
     exp.progress_bar = al.ProgressBar(show_text=True)
-    
+
+
 exp.main += al.Page(name="page0")
 exp.main.page0 += al.Text("Welcome!", align="center")
 exp.main.page0 += al.Text("*Instructions*", align="center")
 
 
+
+
 ## turn into admin page/behind the scenes 
-exp.main += al.Page(name="page1")
-exp.main.page1 += al.TextEntry(toplab="Please enter the file name:", name="uploaded_file")
-exp.main.page1 += al.TextEntry(toplab="Please enter the target feature:", name="t2")
+@exp.member(admin=True)
+class Page1(admin.SpectatorPage):
+    def on_exp_access(self):
+        self += al.TextEntry(toplab="Please enter the file name:", name="uploaded_file")
+        self += al.TextEntry(toplab="Please enter the target feature:", name="t2")
+        
 
 @exp.member(of_section="main")
 class Page2(al.Page):
 
     def on_first_show(self):
+        
         uploaded_file = self.exp.values["uploaded_file"]
         target_feature = self.exp.values["t2"]
         preds, accuracy, correlation_coefficient = pred(uploaded_file, target_feature)
         
-        self += al.Html(html=preds.to_html())
-        
+        # need to make the table fit 
+        html_element = al.Html(html=preds.to_html())
+        self += html_element
+    
         self += al.Text(f"Accuracy: {accuracy:.2f}%")
         self += al.Text(f"Pearson correlation coefficient: {correlation_coefficient:.2f}")
-         
         self += al.TextEntry(toplab="Please enter your prediction:", name="prediction", align="center")
-
+        
 
         
 
