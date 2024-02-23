@@ -1,12 +1,11 @@
 import pandas as pd
-import sys
 
-from sklearn.preprocessing import StandardScaler
+# from sklearn.preprocessing import StandardScaler
 from sklearn.ensemble import RandomForestRegressor
 from sklearn.model_selection import train_test_split
 from scipy.stats import pearsonr
 
-class Main:
+class Model:
      
     def pred(file, target):
 
@@ -46,19 +45,13 @@ class Main:
         print(df_out.head(100))
         
         # accuracy
-        print('Accuracy: {}'.format((rf.score(X_test, y_test))*100))
+        accuracy = rf.score(X_test, y_test)*100
         
         # calculate the Pearson correlation coefficient
         correlation_coefficient, _ = pearsonr(y_pred, y_test)
         print(f"r: {correlation_coefficient}")
-
-if __name__ == '__main__':
-    if len(sys.argv) != 3:
-        print("Usage: python main.py <file_name> <target_feature>")
-    else:
-        file_name = sys.argv[1]
-        target_feature = sys.argv[2]
-        Main.pred(file_name, target_feature)
+        
+        return df_out.head(100), accuracy, correlation_coefficient
     
     
     
