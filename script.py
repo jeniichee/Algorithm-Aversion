@@ -16,9 +16,6 @@ def pred(file, target):
     # load file 
     df = pd.read_csv(os.path.join(os.path.dirname(os.path.abspath(__file__)), "databases/", file))
     
-    # optional drop columns 
-    # uploaded_file = uploaded_file.drop()
-    
     # encode categorical features
     df_encoded = pd.get_dummies(df) 
 
@@ -27,12 +24,6 @@ def pred(file, target):
     y = df_encoded[target] # target
 
     X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=7)
-    
-    # # StandardScaler to normalize numeric data 
-    # scaler = StandardScaler() 
-    # scaler.fit(X_train)
-    # X_train = scaler.transform(X_train) # transform training data
-    # X_test = scaler.transform(X_test) # transform test data
 
     # the model
     rf = RandomForestRegressor(n_estimators=100, random_state=7)
@@ -41,20 +32,18 @@ def pred(file, target):
     # predict labels for test
     y_pred = rf.predict(X_test)
 
-    # converting y_pred 
-    predictions = pd.DataFrame()
-    predictions['predictions'] =[round(val) for val in y_pred.tolist()]
-    predictions['true value'] = round(y_test)
-    # predictions['Error'] =  predictions['True Classes'] - predictions['Predictions'] 
-
+    # cues 
     df_out = df.merge(X_test, left_index=True, right_index=True, how='inner')
     df_out = df_out.drop(columns=['total_bill_y', 'size_y', 'sex_Female', 
                                   'sex_Male', 'smoker_No', 'smoker_Yes', 
                                   'day_Fri', 'day_Sat', 'day_Sun', 'day_Thur', 
                                   'time_Dinner', 'time_Lunch', 'tip'], axis=1) # drop encoded columns
-
-    df_out_preds = df_out.merge(predictions, left_index = True, right_index = True)
     
+    # cues w/true values and predictions (TODO: show w/parameters or create different dataframe)
+    df_out_preds = df_out.copy()
+    # df_out_preds['predictions'] = [round(val) for val in y_pred.tolist()]
+    df_out_preds['true value'] = round(y_test)
+
     # rename columns 
     df_out.rename(columns = {"total_bill_x": "total bill", "size_x": "number of guests"}, inplace = True)
     df_out_preds.rename(columns = {"total_bill_x": "total bill", "size_x": "number of guests"}, inplace = True)
@@ -71,37 +60,50 @@ def pred(file, target):
 exp = al.Experiment()
 trials = 10 
 
-# setup
-# TODO: 
-@exp.setup
-def setup(exp):
-    exp.progress_bar = al.ProgressBar(show_text=True)
-    
+# Section 0: setup 
 exp += al.HideOnForwardSection(name="setup_section")
+exp.setup_section += al.ProgressBar(show_text=True)
 exp.setup_section += al.Page(name="setup_page")
 exp.setup_section.setup_page += al.SingleChoiceButtons('Human', 'Algorithm', 'Toad', name = 'condition')
 
 # Section 01: instructions section 
-exp += al.ForwardOnlySection(name="section01")
-exp.section01 += al.Page(name="welcome_pg")
-exp.section01.welcome_pg += al.Text("Welcome!", align="center")
-exp.section01.welcome_pg += al.Text("""
-We are researchers from Queen\'s University, Belfast. We are investigating judgment and decision making.
-In this study, you\'ll be asked to make judgments and predictions. The study should take __ minutes to complete. 
-Your participation is entirely voluntary. You can end the survey at any point, for any reason, without penalty. 
-Your responses will be anonymised and the data will be held securely. 
-This means there is no way for anybody to possibly link the data to you. 
-This includes us as the researchers, which means that once you complete the study, 
-we will not have the means to withdraw your data after this point.
-Why is this important? 
-Since the data we collect from you may be of interest to other researchers, 
-we will publish it on a publicly accessible online data repository such as the Open Science Framework 
-(https://www.osf.io), where it will remain indefinitely. 
-That means, upon publication of the data set, anyone will have access to your anonymised (i.e., non-identifiable) data.   
-""", align="center")
+exp += al.ForwardOnlySection(name="instructions_section")
+
+# TODO: different instructions and labels for the advisors depending on the condition...labels?
+class Instructions: 
+    
+    def on_first_show(self): 
+        condition = self.exp.values.get()
+        self += al.Page(name="welcome_pg")
+        self += al.Text("Welcome!", align="center")
+        
+        if condition == "Human":
+            self += al.Text("""
+                            We are researchers from Queen\'s University, Belfast. We are investigating judgment and decision making.
+                            In this study, you\'ll be asked to make judgments and predictions. The study should take __ minutes to complete. 
+                            Your participation is entirely voluntary. You can end the survey at any point, for any reason, without penalty. 
+                            Your responses will be anonymised and the data will be held securely. 
+                            This means there is no way for anybody to possibly link the data to you. 
+                            This includes us as the researchers, which means that once you complete the study, we will not have the means to withdraw your data after this point.
+                            \bWhy is this important? 
+                            Since the data we collect from you may be of interest to other researchers, 
+                            we will publish it on a publicly accessible online data repository such as the Open Science Framework 
+                            (\bhttps://www.osf.io), where it will remain indefinitely. 
+                            That means, upon publication of the data set, anyone will have access to your anonymised (i.e., non-identifiable) data.   
+                            """, align="center")
+        elif(condition == "Algorithm"):
+             self += al.Text("""
+                             beep boop beep bap boop beep boop beep bap boop beep boop beep bap boop beep boop beep bap 
+                             boop beep boop beep bap boop
+                             """, align="center")
+        elif(condition == "Toad"):
+            self += al.Text("""
+                             ribbit ribbit croak ribbit ribbit ribbit croak ribbit ribbit ribbit croak ribbit ribbit ribbit croak ribbit
+                             ribbit ribbit croak ribbit ribbit ribbit croak ribbit
+                             """)
 
 # TODO: import consent page 
-exp.section01 += al.Page(title="consent", name="consent_pg")
+exp.section01 += al.Page(title="consent", name="instructions_section")
 exp.section01.consent_pg += al.Text("Please select each box if you consent to each statement.")
 exp.section01.consent_pg += al.Text("YOU CANNOT PROCEED TO THE SURVEY WITHOUT RESPONDING TO EACH STATEMENT")
 exp.section01.consent_pg += al.Hline()
@@ -112,41 +114,44 @@ exp.section01.consent_pg += al.MultipleChoice("Yes", "No", toplab="I have read a
 # TODO: ask if he means trials like this? 
 exp += al.HideOnForwardSection(name="feedback_section")
 
-for i in range(1, trials+1):
-    exp.feedback_section += al.Page(name=f"trial{i}_page1")
-    exp.feedback_section += al.Page(name=f"trial{i}_page2") 
+# for i in range(1, trials+1):
+#     exp.feedback_section += al.Page(name=f"trial{i}_page1")
+#     exp.feedback_section += al.Page(name=f"trial{i}_page2") 
     
-# Page 1: shows cues for this trial only w/out algorithm prediction yet + asks participants to enter initial estimate
+# Page 1: shows cues for this trial only w/out algorithm prediction yet 
+# + asks participants to enter initial estimate
 @exp.member(of_section="feedback_section")
-class Page1(al.Page):
+class Trials_Page1(al.Page):
 
     def on_first_show(self):
         
         # file/target input 
         uploaded_file = "tips.csv"
         target_feature = "tip"
-        preds, no_preds = pred(uploaded_file, target_feature)
+        no_preds, _ = pred(uploaded_file, target_feature)
 
-        self += al.Html(html=preds.to_html(), name="table")
+        self += al.Html(html=no_preds.to_html(), name="table") # TODO: show only one row 
         self += al.Hline()
         exp.section01.consent_pg += al.VerticalSpace("10px")
         self += al.TextEntry(toplab="Please enter your prediction:", name="prediction", align="center")
         
 #  Page 2: shows the cues, the advisor’s estimate, and the true value.
 @exp.member(of_section="feedback_section")
-class Page2(al.Page):
+class Trials_Page2(al.Page):
 
     def on_first_show(self):
         
         # file/target input 
         uploaded_file = "tips.csv"
         target_feature = "tip"
-        preds, no_preds = pred(uploaded_file, target_feature)
+        _, preds = pred(uploaded_file, target_feature)
+        
+        estimate = self.exp.values.get("prediction")
 
-        self += al.Html(html=preds.to_html(), name="table")
+        self += al.Html(html=preds.to_html(), name="preds_table")
         self += al.Hline()
-        exp.section01.consent_pg += al.VerticalSpace("10px")
-        self += al.TextEntry(toplab="Please enter your prediction:", name="prediction", align="center")
+        self += al.Text("Your guess: " + estimate)
+        
         
 # Section 03: 
 # TODO: confidence levels
