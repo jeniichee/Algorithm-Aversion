@@ -8,7 +8,6 @@ import os
 
 from sklearn.ensemble import RandomForestRegressor
 from sklearn.model_selection import train_test_split
-from scipy.stats import pearsonr
 
 # prediction function 
 def pred(file, target):
@@ -62,7 +61,6 @@ trials = 10
 
 # Section 0: setup 
 exp += al.HideOnForwardSection(name="setup_section")
-exp.setup_section += al.ProgressBar(show_text=True)
 exp.setup_section += al.Page(name="setup_page")
 exp.setup_section.setup_page += al.SingleChoiceButtons('Human', 'Algorithm', 'Toad', name = 'condition')
 
@@ -70,45 +68,49 @@ exp.setup_section.setup_page += al.SingleChoiceButtons('Human', 'Algorithm', 'To
 exp += al.ForwardOnlySection(name="instructions_section")
 
 # TODO: different instructions and labels for the advisors depending on the condition...labels?
-class Instructions: 
+@exp.member(of_section="instructions_section")
+class Instructions(al.Page): 
     
     def on_first_show(self): 
-        condition = self.exp.values.get()
-        self += al.Page(name="welcome_pg")
-        self += al.Text("Welcome!", align="center")
+        condition = self.exp.values.get("condition")
+        text = " "
         
         if condition == "Human":
-            self += al.Text("""
-                            We are researchers from Queen\'s University, Belfast. We are investigating judgment and decision making.
-                            In this study, you\'ll be asked to make judgments and predictions. The study should take __ minutes to complete. 
-                            Your participation is entirely voluntary. You can end the survey at any point, for any reason, without penalty. 
-                            Your responses will be anonymised and the data will be held securely. 
-                            This means there is no way for anybody to possibly link the data to you. 
-                            This includes us as the researchers, which means that once you complete the study, we will not have the means to withdraw your data after this point.
-                            \bWhy is this important? 
-                            Since the data we collect from you may be of interest to other researchers, 
-                            we will publish it on a publicly accessible online data repository such as the Open Science Framework 
-                            (\bhttps://www.osf.io), where it will remain indefinitely. 
-                            That means, upon publication of the data set, anyone will have access to your anonymised (i.e., non-identifiable) data.   
-                            """, align="center")
-        elif(condition == "Algorithm"):
-             self += al.Text("""
-                             beep boop beep bap boop beep boop beep bap boop beep boop beep bap boop beep boop beep bap 
-                             boop beep boop beep bap boop
-                             """, align="center")
-        elif(condition == "Toad"):
-            self += al.Text("""
-                             ribbit ribbit croak ribbit ribbit ribbit croak ribbit ribbit ribbit croak ribbit ribbit ribbit croak ribbit
-                             ribbit ribbit croak ribbit ribbit ribbit croak ribbit
-                             """)
+            text = """ 
+            We are researchers from Queen\'s University, Belfast. We are investigating judgment and decision making.
+            In this study, you\'ll be asked to make judgments and predictions. The study should take __ minutes to complete. 
+            Your participation is entirely voluntary. You can end the survey at any point, for any reason, without penalty. 
+            Your responses will be anonymised and the data will be held securely. 
+            This means there is no way for anybody to possibly link the data to you. 
+            This includes us as the researchers, which means that once you complete the study, we will not have the means to withdraw your data after this point.
+            \bWhy is this important? 
+            Since the data we collect from you may be of interest to other researchers, 
+            we will publish it on a publicly accessible online data repository such as the Open Science Framework 
+            (\bhttps://www.osf.io), where it will remain indefinitely. 
+            That means, upon publication of the data set, anyone will have access to your anonymised (i.e., non-identifiable) data.   
+            """
+        elif condition == "Algorithm":
+            text = """
+            beep boop beep bap boop beep boop beep bap boop beep boop beep bap boop beep boop beep bap 
+            boop beep boop beep bap boop
+            """
+        elif condition == "Toad":
+            text = """
+            ribbit ribbit croak ribbit ribbit ribbit croak ribbit ribbit ribbit croak ribbit ribbit ribbit croak ribbit
+            ribbit ribbit croak ribbit ribbit ribbit croak ribbit
+            """
+        
+        self += al.Text("Welcome!", align="center")
+        self += al.Text(text, align="center")
+    
 
 # TODO: import consent page 
-exp.section01 += al.Page(title="consent", name="instructions_section")
-exp.section01.consent_pg += al.Text("Please select each box if you consent to each statement.")
-exp.section01.consent_pg += al.Text("YOU CANNOT PROCEED TO THE SURVEY WITHOUT RESPONDING TO EACH STATEMENT")
-exp.section01.consent_pg += al.Hline()
-exp.section01.consent_pg += al.VerticalSpace("10px")
-exp.section01.consent_pg += al.MultipleChoice("Yes", "No", toplab="I have read and understood the information about the study.", name="m1")
+exp.instructions_section += al.Page(title="consent", name="consent_pg")
+exp.instructions_section.consent_pg += al.Text("Please select each box if you consent to each statement.")
+exp.instructions_section.consent_pg += al.Text("YOU CANNOT PROCEED TO THE SURVEY WITHOUT RESPONDING TO EACH STATEMENT")
+exp.instructions_section.consent_pg += al.Hline()
+exp.instructions_section.consent_pg += al.VerticalSpace("10px")
+exp.instructions_section.consent_pg += al.MultipleChoice("Yes", "No", toplab="I have read and understood the information about the study.", name="m1")
 
 # Section 02: feedback 
 # TODO: ask if he means trials like this? 
@@ -132,7 +134,6 @@ class Trials_Page1(al.Page):
 
         self += al.Html(html=no_preds.to_html(), name="table") # TODO: show only one row 
         self += al.Hline()
-        exp.section01.consent_pg += al.VerticalSpace("10px")
         self += al.TextEntry(toplab="Please enter your prediction:", name="prediction", align="center")
         
 #  Page 2: shows the cues, the advisor’s estimate, and the true value.
