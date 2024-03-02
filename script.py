@@ -40,7 +40,7 @@ def pred(file, target):
     
     # cues w/true values and predictions (TODO: show w/parameters or create different dataframe)
     df_out_preds = df_out.copy()
-    # df_out_preds['predictions'] = [round(val) for val in y_pred.tolist()]
+    df_out_preds['your advisor\'s estimate'] = [round(val) for val in y_pred.tolist()]
     df_out_preds['true value'] = round(y_test)
 
     # rename columns 
@@ -72,37 +72,41 @@ exp += al.ForwardOnlySection(name="instructions_section")
 class Instructions(al.Page): 
     
     def on_first_show(self): 
-        condition = self.exp.values.get("condition")
-        text = " "
-        
-        if condition == "Human":
-            text = """ 
-            We are researchers from Queen\'s University, Belfast. We are investigating judgment and decision making.
-            In this study, you\'ll be asked to make judgments and predictions. The study should take __ minutes to complete. 
-            Your participation is entirely voluntary. You can end the survey at any point, for any reason, without penalty. 
-            Your responses will be anonymised and the data will be held securely. 
-            This means there is no way for anybody to possibly link the data to you. 
-            This includes us as the researchers, which means that once you complete the study, we will not have the means to withdraw your data after this point.
-            \bWhy is this important? 
-            Since the data we collect from you may be of interest to other researchers, 
-            we will publish it on a publicly accessible online data repository such as the Open Science Framework 
-            (\bhttps://www.osf.io), where it will remain indefinitely. 
-            That means, upon publication of the data set, anyone will have access to your anonymised (i.e., non-identifiable) data.   
-            """
-        elif condition == "Algorithm":
-            text = """
-            beep boop beep bap boop beep boop beep bap boop beep boop beep bap boop beep boop beep bap 
-            boop beep boop beep bap boop
-            """
-        elif condition == "Toad":
-            text = """
-            ribbit ribbit croak ribbit ribbit ribbit croak ribbit ribbit ribbit croak ribbit ribbit ribbit croak ribbit
-            ribbit ribbit croak ribbit ribbit ribbit croak ribbit
-            """
         
         self += al.Text("Welcome!", align="center")
-        self += al.Text(text, align="center")
-    
+        condition = self.exp.values.get("condition")
+        
+        if condition == 1:
+            self += al.Text (""" 
+            We are researchers from Queen\'s University, Belfast. 
+            We are investigating judgment and decision making.
+            In this study, you\'ll be asked to make judgments and predictions. 
+            The study should take __ minutes to complete. 
+            Your participation is entirely voluntary. 
+            You can end the survey at any point, for any reason, without penalty. 
+            Your responses will be anonymised and the data will be held securely. 
+            This means there is no way for anybody to possibly link the data to you. 
+            This includes us as the researchers, which means that once you complete the study, 
+            we will not have the means to withdraw your data after this point.
+            
+            Why is this important? 
+            Since the data we collect from you may be of interest to other researchers, 
+            we will publish it on a publicly accessible online data repository 
+            such as the Open Science Framework (https://www.osf.io), where it will remain indefinitely. 
+            That means, upon publication of the data set, 
+            anyone will have access to your anonymised (i.e., non-identifiable) data.   
+            """, align="center")
+        elif condition == 2:
+            self += al.Text("""
+            beep boop beep bap boop beep boop beep bap boop beep boop 
+            beep bap boop beep boop beep bap boop beep boop beep bap boop
+            """, align="center")
+        else:
+            self += al.Text("""
+            ribbit ribbit croak ribbit ribbit ribbit croak ribbit ribbit ribbit 
+            croak ribbit ribbit ribbit croak ribbitribbit ribbit croak ribbit 
+            ribbit ribbit croak ribbit
+            """, align="center")
 
 # TODO: import consent page 
 exp.instructions_section += al.Page(title="consent", name="consent_pg")
