@@ -9,7 +9,7 @@ import os
 from sklearn.ensemble import RandomForestRegressor
 from sklearn.model_selection import train_test_split
 
-# prediction function 
+# prediction model 
 def pred(file, target):
 
     # load file 
@@ -40,8 +40,8 @@ def pred(file, target):
     
     # cues w/true values and predictions (TODO: show w/parameters or create different dataframe)
     df_out_preds = df_out.copy()
-    df_out_preds['your advisor\'s estimate'] = [round(val) for val in y_pred.tolist()]
-    df_out_preds['true value'] = round(y_test)
+    df_out_preds['your advisor\'s estimate'] = [round(val, 2) for val in y_pred.tolist()]
+    df_out_preds['true value'] = round(y_test, 2)
 
     # rename columns 
     df_out.rename(columns = {"total_bill_x": "total bill", "size_x": "number of guests"}, inplace = True)
@@ -59,62 +59,88 @@ def pred(file, target):
 exp = al.Experiment()
 trials = 10 
 
-# Section 0: setup 
+## Section 0: setup 
+
+# *option A: choose*
 exp += al.HideOnForwardSection(name="setup_section")
 exp.setup_section += al.Page(name="setup_page")
-exp.setup_section.setup_page += al.SingleChoiceButtons('Human', 'Algorithm', 'Toad', name = 'condition')
+exp.setup_section.setup_page += al.SingleChoiceButtons('Human', 'Algorithm', 'Hybrid', name = 'condition')
 
-# Section 01: instructions section 
+# *option B: random+equal sample size for all conditions*
+# @exp.setup 
+# def setup(exp): 
+#     randomizer = al.ListRandomizer.balanced("Human", "Algorithm", "Hybrid", exp=exp) 
+#     exp.condition = randomizer.get_condition()
+
+## Section 01: introductions section 
 exp += al.ForwardOnlySection(name="instructions_section")
+exp.instructions_section += al.Page(name="introduction")
+exp.instructions_section.introduction += al.Text("We are researchers from Queen's University, Belfast. We are investigating judgment and decision making. In this study, you'll be asked to make estimates based on information that you receive. You will then be given advice. After receiving this advice, you may make a final estimate. The study should take __ minutes to complete. Your participation is entirely voluntary. You can end the survey at any point, for any reason, without penalty.")
 
-# TODO: different instructions and labels for the advisors depending on the condition...labels?
+# participant information 
+exp.instructions_section += al.Page(name="pi")
+exp.instructions_section.pi += al.Text(path="Participant Information.txt") 
+
+# Screen 1: consent 
+@exp.member(of_section="instructions_section")
+class Consent(al.Page): 
+    
+    def on_first_show(self):
+        self += al.Text("Please select each box if you consent to each statement.")
+        self += al.Text("YOU CANNOT PROCEED TO THE SURVEY WITHOUT RESPONDING TO EACH STATEMENT.", align="center")
+        self += al.Hline()
+        self += al.VerticalSpace("10px")
+        
+        # default option is no? 
+        self += al.MultipleChoice("Yes", "No", toplab="I have read and understood the information about the study.", name="m1")
+        self += al.MultipleChoice("Yes", "No", toplab="""I understand that my participation is entirely voluntary 
+                                  and that I am free to withdraw at any time throughout, without giving a reason.""", name="m2")
+        self += al.MultipleChoice("Yes", "No", toplab="""I understand that my involvement in this research is strictly anonymous 
+                                  and my participation is confidential.""", name="m3")
+        self += al.MultipleChoice("Yes", "No", toplab="I understand that my anonymised data will be published in a public repository.", 
+                                  name="m4")
+        self += al.MultipleChoice("Yes", "No", toplab="I consent to participate in this study.", name="m5")
+        self += al.MultipleChoice("Yes", "No", toplab="""I understand that the study is being conducted by researchers from 
+                                  Queen's University Belfast and that my personal information will be held securely 
+                                  and handled in accordance with the provisions of the Data Protection Act 2018.""", name="m6")
+        self += al.Hline()
+        self += al.Text("Please contact the Chief Investigator at the below details if you wish to ask any further questions about the study:")
+        self += al.Text("Chief Investigator: Dr Thomas Schultze at t.schultze@qub.ac.uk.")
+        # self += al.Button(text="Submit", func=Any, followup="forward") 
+        
+# Screen 2: Age, Gender, Education level & Prolific ID
+@exp.member(of_section="instructions_section")
+class AGEP(al.Page):
+    
+    def on_first_show(self): 
+        self += al.SingleChoiceList("Select", "18-24", "25-34", "35-44", "45-54", "55-64", "65 and over", toplab="What is your age?", name="sl1")
+        self += al.SingleChoiceList("Select", "Male", "Female", "Prefer not to say", toplab="What is your gender?", name="sl2")
+        self += al.SingleChoiceList("Select", "Less than Secondary school", "GCSE's", "A Levels", "Undergraduate Degree", 
+                                    "Postgraduate Certificate", "Master's Degree", "Professional Degree", "Doctoral Degree", 
+                                    toplab="What is the highest level of education you have completed?", name="sl3")
+        # self += al.Button(text="Submit", followup="forward")
+        
+# Screen 3: Task information & Incentivization
 @exp.member(of_section="instructions_section")
 class Instructions(al.Page): 
     
     def on_first_show(self): 
         
         self += al.Text("Welcome!", align="center")
-        condition = self.exp.values.get("condition")
+        condition = self.exp.values.get("condition") 
         
         if condition == 1:
             self += al.Text (""" 
-            We are researchers from Queen\'s University, Belfast. 
-            We are investigating judgment and decision making.
-            In this study, you\'ll be asked to make judgments and predictions. 
-            The study should take __ minutes to complete. 
-            Your participation is entirely voluntary. 
-            You can end the survey at any point, for any reason, without penalty. 
-            Your responses will be anonymised and the data will be held securely. 
-            This means there is no way for anybody to possibly link the data to you. 
-            This includes us as the researchers, which means that once you complete the study, 
-            we will not have the means to withdraw your data after this point.
-            
-            Why is this important? 
-            Since the data we collect from you may be of interest to other researchers, 
-            we will publish it on a publicly accessible online data repository 
-            such as the Open Science Framework (https://www.osf.io), where it will remain indefinitely. 
-            That means, upon publication of the data set, 
-            anyone will have access to your anonymised (i.e., non-identifiable) data.   
+  
             """, align="center")
         elif condition == 2:
             self += al.Text("""
-            beep boop beep bap boop beep boop beep bap boop beep boop 
-            beep bap boop beep boop beep bap boop beep boop beep bap boop
+
             """, align="center")
         else:
             self += al.Text("""
-            ribbit ribbit croak ribbit ribbit ribbit croak ribbit ribbit ribbit 
-            croak ribbit ribbit ribbit croak ribbitribbit ribbit croak ribbit 
-            ribbit ribbit croak ribbit
+  
             """, align="center")
-
-# TODO: import consent page 
-exp.instructions_section += al.Page(title="consent", name="consent_pg")
-exp.instructions_section.consent_pg += al.Text("Please select each box if you consent to each statement.")
-exp.instructions_section.consent_pg += al.Text("YOU CANNOT PROCEED TO THE SURVEY WITHOUT RESPONDING TO EACH STATEMENT")
-exp.instructions_section.consent_pg += al.Hline()
-exp.instructions_section.consent_pg += al.VerticalSpace("10px")
-exp.instructions_section.consent_pg += al.MultipleChoice("Yes", "No", toplab="I have read and understood the information about the study.", name="m1")
 
 # Section 02: feedback 
 # TODO: ask if he means trials like this? 
@@ -138,7 +164,7 @@ class Trials_Page1(al.Page):
 
         self += al.Html(html=no_preds.to_html(), name="table") # TODO: show only one row 
         self += al.Hline()
-        self += al.TextEntry(toplab="Please enter your prediction:", name="prediction", align="center")
+        self += al.TextEntry(toplab="How much do you think was paid as a tip for this bill? (Please enter a number between 0-10, to two decimal places e.g. 1.00)", name="prediction", align="center")
         
 #  Page 2: shows the cues, the advisor’s estimate, and the true value.
 @exp.member(of_section="feedback_section")
@@ -155,7 +181,7 @@ class Trials_Page2(al.Page):
 
         self += al.Html(html=preds.to_html(), name="preds_table")
         self += al.Hline()
-        self += al.Text("Your guess: " + estimate)
+        self += al.Text("Your estimate: " + estimate)
         
         
 # Section 03: 

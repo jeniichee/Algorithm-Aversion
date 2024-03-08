@@ -1,10 +1,22 @@
-exp_title;exp_author;exp_version;alfred_version;element_type;name;label_top;label_left;label_right;label_bottom;force_input;default;placeholder;prefix;suffix;description;tree;page_title;unlinked;n_choices;choice1;choice2;choice3
-Example Title;Authors;1.0;2.4.0;TextEntry;text1;Please estimate the length of the following river:;;;;False;;;;;;_content.main.Page1;Welcome;False;;;;
-Example Title;Authors;1.0;2.4.0;TextEntry;file;Please enter the file name:;;;;True;;;;;;_content.main.Page1;File;False;;;;
-Example Title;Authors;1.0;2.4.0;TextEntry;target;Please enter the target feature:;;;;True;;;;;;_content.main.Page1;File;False;;;;
-Study 1 Hybrid Advice;Authors;1.0;2.4.0;TextEntry;prediction;Please enter your prediction:;;;;True;;;;;;_content.feedback_section.Trials_Page1;;False;;;;
-Example Title;Authors;1.0;2.4.0;TextEntry;t1;Please enter the file name:;;;;True;;;;;;_content.main.page1;;False;;;;
-Example Title;Authors;1.0;2.4.0;TextEntry;t2;;Please enter the target feature:;;;True;;;;;;_content.StartSection.start_pg;;False;;;;
-Example Title;Authors;1.0;2.4.0;TextEntry;uploaded_file;;Please enter the file name:;;;True;;;;;;_content.StartSection.start_pg;;False;;;;
-Study 1 Hybrid Advice;Authors;1.0;2.4.0;SingleChoiceButtons;condition;;;;;True;;;;;;_content.setup_section.setup_page;;False;3;Human;Algorithm;Toad
-Study 1 Hybrid Advice;Authors;1.0;2.4.0;MultipleChoice;m1;I have read and understood the information about the study.;;;;True;;;;;;_content.instructions_section.consent_pg;consent;False;2;Yes;No;
+exp_title;exp_author;exp_version;alfred_version;element_type;name;label_top;label_left;label_right;label_bottom;force_input;default;placeholder;prefix;suffix;description;tree;page_title;unlinked;n_choices;choice1;choice2;choice3;choice4;choice5;choice6;choice7;choice8
+Example Title;Authors;1.0;2.4.0;TextEntry;text1;Please estimate the length of the following river:;;;;False;;;;;;_content.main.Page1;Welcome;False;;;;;;;;;
+Example Title;Authors;1.0;2.4.0;TextEntry;file;Please enter the file name:;;;;True;;;;;;_content.main.Page1;File;False;;;;;;;;;
+Example Title;Authors;1.0;2.4.0;TextEntry;target;Please enter the target feature:;;;;True;;;;;;_content.main.Page1;File;False;;;;;;;;;
+Study 1 Hybrid Advice;Authors;1.0;2.4.0;TextEntry;prediction;How much do you think was paid as a tip for this bill? (Please enter a number between 0-10, to two decimal places e.g. 1.00);;;;True;;;;;;_content.feedback_section.Trials_Page1;;False;;;;;;;;;
+Example Title;Authors;1.0;2.4.0;TextEntry;t1;Please enter the file name:;;;;True;;;;;;_content.main.page1;;False;;;;;;;;;
+Example Title;Authors;1.0;2.4.0;TextEntry;t2;;Please enter the target feature:;;;True;;;;;;_content.StartSection.start_pg;;False;;;;;;;;;
+Example Title;Authors;1.0;2.4.0;TextEntry;uploaded_file;;Please enter the file name:;;;True;;;;;;_content.StartSection.start_pg;;False;;;;;;;;;
+Study 1 Hybrid Advice;Authors;1.0;2.4.0;SingleChoiceButtons;condition;;;;;True;;;;;;_content.setup_section.setup_page;;False;3;Human;Algorithm;Hybrid;;;;;
+Study 1 Hybrid Advice;Authors;1.0;2.4.0;MultipleChoice;m1;I have read and understood the information about the study.;;;;True;;;;;;_content.instructions_section.Consent;;False;2;Yes;No;;;;;;
+Study 1 Hybrid Advice;Authors;1.0;2.4.0;MultipleChoice;m2;"I understand that my participation is entirely voluntary 
+                                  and that I am free to withdraw at any time throughout, without giving a reason.";;;;True;;;;;;_content.instructions_section.Consent;;False;2;Yes;No;;;;;;
+Study 1 Hybrid Advice;Authors;1.0;2.4.0;MultipleChoice;m3;"I understand that my involvement in this research is strictly anonymous 
+                                  and my participation is confidential.";;;;True;;;;;;_content.instructions_section.Consent;;False;2;Yes;No;;;;;;
+Study 1 Hybrid Advice;Authors;1.0;2.4.0;MultipleChoice;m4;I understand that my anonymised data will be published in a public repository.;;;;True;;;;;;_content.instructions_section.Consent;;False;2;Yes;No;;;;;;
+Study 1 Hybrid Advice;Authors;1.0;2.4.0;MultipleChoice;m5;I consent to participate in this study.;;;;True;;;;;;_content.instructions_section.Consent;;False;2;Yes;No;;;;;;
+Study 1 Hybrid Advice;Authors;1.0;2.4.0;MultipleChoice;m6;"I understand that the study is being conducted by researchers from 
+                                  Queen's University Belfast and that my personal information will be held securely 
+                                  and handled in accordance with the provisions of the Data Protection Act 2018.";;;;True;;;;;;_content.instructions_section.Consent;;False;2;Yes;No;;;;;;
+Study 1 Hybrid Advice;Authors;1.0;2.4.0;SingleChoiceList;sl1;What is your age?;;;;True;1;;;;;_content.instructions_section.AGEP;;False;6;18-24;25-34;35-44;45-54;55-64;65 and over;;
+Study 1 Hybrid Advice;Authors;1.0;2.4.0;SingleChoiceList;sl2;What is your gender?;;;;True;1;;;;;_content.instructions_section.AGEP;;False;3;Male;Female;Prefer not to say;;;;;
+Study 1 Hybrid Advice;Authors;1.0;2.4.0;SingleChoiceList;sl3;What is the highest level of education you have completed?;;;;True;1;;;;;_content.instructions_section.AGEP;;False;8;Less than Secondary school;GCSE's;A Levels;Undergraduate Degree;Postgraduate Certificate;Master's Degree;Professional Degree;Doctoral Degree
