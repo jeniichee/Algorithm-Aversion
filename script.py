@@ -75,7 +75,14 @@ exp.setup_section.setup_page += al.SingleChoiceButtons('Human', 'Algorithm', 'Hy
 ## Section 01: introductions section 
 exp += al.ForwardOnlySection(name="instructions_section")
 exp.instructions_section += al.Page(name="introduction")
-exp.instructions_section.introduction += al.Text("We are researchers from Queen's University, Belfast. We are investigating judgment and decision making. In this study, you'll be asked to make estimates based on information that you receive. You will then be given advice. After receiving this advice, you may make a final estimate. The study should take __ minutes to complete. Your participation is entirely voluntary. You can end the survey at any point, for any reason, without penalty.")
+exp.instructions_section.introduction += al.Text("""We are researchers from Queen's University, Belfast. 
+                                                 We are investigating judgment and decision making. 
+                                                 In this study, you'll be asked to make estimates based on information that you receive. 
+                                                 You will then be given advice. 
+                                                 After receiving this advice, you may make a final estimate.
+                                                 The study should take __ minutes to complete. 
+                                                 Your participation is entirely voluntary. 
+                                                 You can end the survey at any point, for any reason, without penalty.""")
 
 # participant information 
 exp.instructions_section += al.Page(name="pi")
@@ -119,58 +126,89 @@ class AGEP(al.Page):
                                     "Postgraduate Certificate", "Master's Degree", "Professional Degree", "Doctoral Degree", 
                                     toplab="What is the highest level of education you have completed?", name="sl3")
         # self += al.Button(text="Submit", followup="forward")
-        
-# Screen 3: Task information & Incentivization
-@exp.member(of_section="instructions_section")
-class Instructions(al.Page): 
-    
-    def on_first_show(self): 
-        
-        self += al.Text("Welcome!", align="center")
-        condition = self.exp.values.get("condition") 
-        
-        if condition == 1:
-            self += al.Text (""" 
-  
-            """, align="center")
-        elif condition == 2:
-            self += al.Text("""
 
-            """, align="center")
-        else:
-            self += al.Text("""
+# Screen 3: Task information & Incentivization
+exp += al.Section(name="task_info")
+exp.task_info += al.Page(name="info") 
+exp.task_info.info += al.Text("In this task, you will be asked to estimate the amount of the tip given for each bill in a restaurant. You will be given information about each bill to help you make each estimate. In addition, you will also be provided with an estimate which has been made by an algorithm.")
+exp.task_info.info += al.VerticalSpace("10px")
+exp.task_info.info += al.Text("You will have the opportunity to earn additional rewards by making accurate estimates. Please read all the information provided carefully.")
+exp.task_info += al.Page(name="info0")
+exp.task_info.info0 += al.Text("You will be given information about each specific bill, for example, the number of people who were in the party and the time of day that they ate at. You will use this information to help you estimate how much each table paid as a tip.")
+exp.task_info.info += al.VerticalSpace("10px")
+exp.task_info.info0 += al.Text("This algorithm is designed to forecast the amount that each set of diners may pay as a tip for their bill. The algorithm is based on hundreds of bills, using the same categories of data that you receive. This is a sophisticated model, put together by thoughtful analysis")
+exp.task_info += al.Page(name="inf01")
+exp.task_info.inf01 += al.Text("All the information shown in this study represents real data from a restaurant.")
+exp.task_info.inf01 += al.Text("Based on this data, you will be asked to estimate the amount that each table of diners paid as a tip for each bill.")
+exp.task_info.inf01 += al.Hline()
+exp.task_info.inf01 += al.Text("You will make estimates for 10 bills. You will base your estimates on the data you are given. For each bill, you will be given the following:")
+exp.task_info.inf01 += al.Text("""
+                               Total Amount of Bill	 £00.00
+                               Gender                Male/ Female
+                               Smoker                Yes/ No
+                               Date of Meal	         DD/MM/YY
+                               Time of Day	
+                               Size of Party	 Number of diners at table
+                               """)
+        
+# # Screen 
+# @exp.member(of_section="instructions_section")
+# class Instructions(al.Page): 
+    
+#     def on_first_show(self): 
+        
+#         self += al.Text("Welcome!", align="center")
+#         condition = self.exp.values.get("condition") 
+        
+#         if condition == 1:
+#             self += al.Text (""" 
+                             
+#             """, align="center")
+#         elif condition == 2:
+#             self += al.Text("""
+
+#             """, align="center")
+#         else:
+#             self += al.Text("""
   
-            """, align="center")
+#             """, align="center")
 
 # Section 02: feedback 
 # TODO: ask if he means trials like this? 
-exp += al.HideOnForwardSection(name="feedback_section")
 
-# for i in range(1, trials+1):
-#     exp.feedback_section += al.Page(name=f"trial{i}_page1")
-#     exp.feedback_section += al.Page(name=f"trial{i}_page2") 
+@exp.member 
+class Feedback_Section(al.HideOnForwardSection):
     
+    def on_exp_access(self):
+        
+        self += al.Page(title = "Experience Phase", name = 'experience_phase')
+        self.experience_phase += al.Text("Next, you will complete 10 practice estimates. This is just to give you experience before you complete your 10 actual estimates. You will see the data table with information about each bill. You will make an estimate of the tip paid for the bill. You will then see the algorithm's estimate for the tip paid for each bill. Finally, you will get feedback indicating how close both your estimate and the algorithm's estimate were to the actual tip paid.")
+
+        for i in range(trials):
+            self += Trials_Page1(name=f"trial_{i}",  vargs={"i": i})
+            self += Trials_Page2(name=f"trial0_{i}",  vargs={"i": i})
+
 # Page 1: shows cues for this trial only w/out algorithm prediction yet 
 # + asks participants to enter initial estimate
-@exp.member(of_section="feedback_section")
 class Trials_Page1(al.Page):
 
     def on_first_show(self):
+        i = self.vargs.i
         
         # file/target input 
         uploaded_file = "tips.csv"
         target_feature = "tip"
         no_preds, _ = pred(uploaded_file, target_feature)
 
-        self += al.Html(html=no_preds.to_html(), name="table") # TODO: show only one row 
+        self += al.Html(html=no_preds[:i].to_html(), name=f"table_{i+1:02}") # TODO: show only one row 
         self += al.Hline()
-        self += al.TextEntry(toplab="How much do you think was paid as a tip for this bill? (Please enter a number between 0-10, to two decimal places e.g. 1.00)", name="prediction", align="center")
+        self += al.TextEntry(toplab="How much do you think was paid as a tip for this bill? (Please enter a number between 0-10, to two decimal places e.g. 1.00)", name=f"prediction_{i+1:02}", align="center")
         
 #  Page 2: shows the cues, the advisor’s estimate, and the true value.
-@exp.member(of_section="feedback_section")
 class Trials_Page2(al.Page):
 
     def on_first_show(self):
+        i = self.vargs.i
         
         # file/target input 
         uploaded_file = "tips.csv"
@@ -179,7 +217,7 @@ class Trials_Page2(al.Page):
         
         estimate = self.exp.values.get("prediction")
 
-        self += al.Html(html=preds.to_html(), name="preds_table")
+        self += al.Html(html=preds[:1].to_html(), name=f"preds_{i+1:02}")
         self += al.Hline()
         self += al.Text("Your estimate: " + estimate)
         
