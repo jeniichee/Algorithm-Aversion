@@ -78,14 +78,7 @@ exp.setup_section.setup_page += al.SingleChoiceButtons('Algorithm', 'Human', 'Hy
 # introductions section 
 exp += al.ForwardOnlySection(name="info_consent")
 exp.info_consent += al.Page(name="introduction")
-exp.info_consent.introduction += al.Text("""We are researchers from Queen's University, Belfast. 
-                                                 We are investigating judgment and decision making. 
-                                                 In this study, you'll be asked to make estimates based on information that you receive. 
-                                                 You will then be given advice. 
-                                                 After receiving this advice, you may make a final estimate.
-                                                 The study should take __ minutes to complete. 
-                                                 Your participation is entirely voluntary. 
-                                                 You can end the survey at any point, for any reason, without penalty.""")
+exp.info_consent.introduction += al.Text(path="introduction.txt")
 
 # # participant information 
 # exp.info_consent += al.Page(name="pi")
@@ -143,12 +136,7 @@ class Instructions(al.Page):
         ## algorithm 
         # if self.exp.condition == "Algorithm": 
         if condition == 1: 
-            self += al.Text("In this task, you will be asked to estimate the amount of the tip given for each bill in a restaurant. You will be given information about each bill to help you make each estimate. In addition, you will also be provided with an estimate which has been made by an algorithm.")
-            self += al.VerticalSpace("10px")
-            self += al.Text("You will have the opportunity to earn additional rewards by making accurate estimates. Please read all the information provided carefully.")
-            self += al.Text("You will be given information about each specific bill, for example, the number of people who were in the party and the time of day that they ate at. You will use this information to help you estimate how much each table paid as a tip.")
-            self += al.VerticalSpace("10px")
-            self += al.Text("This algorithm is designed to forecast the amount that each set of diners may pay as a tip for their bill. The algorithm is based on hundreds of bills, using the same categories of data that you receive. This is a sophisticated model, put together by thoughtful analysis")
+            self += al.Text(path="algorithm_condition.txt")
         ## human
         # if self.exp.condition == "Human":
         elif condition == 2: 
