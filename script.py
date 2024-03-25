@@ -78,56 +78,57 @@ exp += al.ForwardOnlySection(name="info_consent")
 exp.info_consent += al.Page(name="introduction")
 exp.info_consent.introduction += al.Text(path="introduction.txt")
 
-# consent page 
-@exp.member(of_section="info_consent")
-class consent(al.Page): 
+# # TODO: if no, take to debrief and end experiment 
+# # consent page 
+# @exp.member(of_section="info_consent")
+# class consent(al.Page): 
     
-    def on_first_show(self):
-        self += al.Text("Please select each box if you consent to each statement.")
-        self += al.Text("YOU CANNOT PROCEED TO THE SURVEY WITHOUT RESPONDING TO EACH STATEMENT.", align="center")
-        self += al.Hline()
+#     def on_first_show(self):
+#         self += al.Text("Please select each box if you consent to each statement.")
+#         self += al.Text("YOU CANNOT PROCEED TO THE SURVEY WITHOUT RESPONDING TO EACH STATEMENT.", align="center")
+#         self += al.Hline()
 
-        self += al.MultipleChoice("Yes", "No", toplab="I have read and understood the information about the study.", min=1, max=1, name="m1")
-        self += al.MultipleChoice("Yes", "No", toplab="""I understand that my participation is entirely voluntary 
-                                  and that I am free to withdraw at any time throughout, without giving a reason.""", min=1, max=1, name="m2")
-        self += al.MultipleChoice("Yes", "No", toplab="""I understand that my involvement in this research is strictly anonymous 
-                                  and my participation is confidential.""", min=1, max=1, name="m3")
-        self += al.MultipleChoice("Yes", "No", toplab="I understand that my anonymised data will be published in a public repository.", 
-                                  min=1, max=1, name="m4")
-        self += al.MultipleChoice("Yes", "No", toplab="I consent to participate in this study.", min=1, max=1, name="m5")
-        self += al.MultipleChoice("Yes", "No", toplab="""I understand that the study is being conducted by researchers from 
-                                  Queen's University Belfast and that my personal information will be held securely 
-                                  and handled in accordance with the provisions of the Data Protection Act 2018.""", min=1, max=1, name="m6")
-        self += al.Hline()
-        self += al.Text("Please contact the Chief Investigator at the below details if you wish to ask any further questions about the study:")
-        self += al.Text("Chief Investigator: Dr Thomas Schultze at t.schultze@qub.ac.uk.")
+#         self += al.MultipleChoice("Yes", "No", toplab="I have read and understood the information about the study.", min=1, max=1, name="m1")
+#         self += al.MultipleChoice("Yes", "No", toplab="""I understand that my participation is entirely voluntary 
+#                                   and that I am free to withdraw at any time throughout, without giving a reason.""", min=1, max=1, name="m2")
+#         self += al.MultipleChoice("Yes", "No", toplab="""I understand that my involvement in this research is strictly anonymous 
+#                                   and my participation is confidential.""", min=1, max=1, name="m3")
+#         self += al.MultipleChoice("Yes", "No", toplab="I understand that my anonymised data will be published in a public repository.", 
+#                                   min=1, max=1, name="m4")
+#         self += al.MultipleChoice("Yes", "No", toplab="I consent to participate in this study.", min=1, max=1, name="m5")
+#         self += al.MultipleChoice("Yes", "No", toplab="""I understand that the study is being conducted by researchers from 
+#                                   Queen's University Belfast and that my personal information will be held securely 
+#                                   and handled in accordance with the provisions of the Data Protection Act 2018.""", min=1, max=1, name="m6")
+#         self += al.Hline()
+#         self += al.Text("Please contact the Chief Investigator at the below details if you wish to ask any further questions about the study:")
+#         self += al.Text("Chief Investigator: Dr Thomas Schultze at t.schultze@qub.ac.uk.")
         
-# Age, Gender, Education level & Prolific ID]
-exp.info_consent += al.Page(name="AGEP")
-exp.info_consent.AGEP += al.NumberEntry(toplab="What is your age?", force_input=True, min=0, max=100, name="participant_age", save_data="True")
-exp.info_consent.AGEP += al.SingleChoiceList("Select", "Male", "Female", "Prefer not to say", toplab="What is your gender?", name="sl2")
-exp.info_consent.AGEP += al.SingleChoiceList("Select", "Less than Secondary school", "GCSE's", "A Levels", "Undergraduate Degree", 
-                                    "Postgraduate Certificate", "Master's Degree", "Professional Degree", "Doctoral Degree", 
-                                    toplab="What is the highest level of education you have completed?", name="sl3")
+# # Age, Gender, Education level & Prolific ID]
+# exp.info_consent += al.Page(name="AGEP")
+# exp.info_consent.AGEP += al.NumberEntry(toplab="What is your age?", force_input=True, min=0, max=100, name="participant_age", save_data="True")
+# exp.info_consent.AGEP += al.SingleChoiceList("Select", "Male", "Female", "Prefer not to say", toplab="What is your gender?", name="sl2")
+# exp.info_consent.AGEP += al.SingleChoiceList("Select", "Less than Secondary school", "GCSE's", "A Levels", "Undergraduate Degree", 
+#                                     "Postgraduate Certificate", "Master's Degree", "Professional Degree", "Doctoral Degree", 
+#                                     toplab="What is the highest level of education you have completed?", name="sl3")
 
-# participant information/debrief page (end experiment if 18 and under)
-@exp.member(of_section="info_consent")
-class PTINFO(al.Page): 
+# # participant information/debrief page (end experiment if 18 and under)
+# @exp.member(of_section="info_consent")
+# class PTINFO(al.Page): 
     
-    def on_first_show(self):
-        if int(self.exp.values.get("participant_age")) <= 18:
-            self += al.Text(path="debrief.txt", align="center")
-        else: 
-             self += al.Text(path="Participant Information.txt")
+#     def on_first_show(self):
+#         if int(self.exp.values.get("participant_age")) <= 18:
+#             self += al.Text(path="debrief.txt", align="center")
+#         else: 
+#              self += al.Text(path="Participant Information.txt")
             
-    def on_first_hide(self):
-        if int(self.exp.values.get("participant_age")) <= 18:
-            self.exp.abort(
-                reason="screening",
-                title="Thank You!",
-                icon="users",
-                msg="Sorry, you must be over 18 to participate in the experiment."
-            ) 
+#     def on_first_hide(self):
+#         if int(self.exp.values.get("participant_age")) <= 18:
+#             self.exp.abort(
+#                 reason="screening",
+#                 title="Thank You!",
+#                 icon="users",
+#                 msg="Sorry, you must be over 18 to participate in the experiment."
+#             ) 
             
 exp += al.ForwardOnlySection(name="instructions_section")
 
@@ -152,13 +153,28 @@ class Instructions(al.Page):
             self += al.Text(path="hybrid_condition.txt")
             self += al.Hline()
    
-        self += al.Text(path="data info.txt")      
-        self += al.Row(al.Text("Total Amount of Bill"), al.Text("£00.00"))
-        self += al.Row( al.Text("Gender"),  al.Text("Male/ Female"))
-        self += al.Row( al.Text("Smoker"),  al.Text("Yes/ No"))
-        self += al.Row( al.Text("Date of Meal"),  al.Text("DD/MM/YY"))
-        self += al.Row( al.Text("Time of Day"),  al.Text(""))
-        self += al.Row( al.Text("Size of Party"),  al.Text("Number of diners at table"))
+        self += al.Text(path="data info.txt")  
+        self += al.Style(code=" th, td {padding: 10px;}")    
+        self += al.Html(html="""
+                        <table>
+                        <tr>
+                            <th>Total Amount of Bill</th>
+                            <th>Gender</th>
+                            <th>Smoker</th>
+                            <th>Date of Meal</th>
+                            <th>Time of Day</th>
+                            <th>Size of Party</th>
+                        </tr>
+                        <tr>
+                            <td>£00.00</td>
+                            <td>Male/Female</td>
+                            <td>Yes/No</td>
+                            <td>DD/MM/YY</td>
+                            <td>eg. Dinner</td>
+                            <td>Number of diners at the table.</td>
+                        </tr>
+                        </table>
+                        """, position="center")
         self += al.VerticalSpace("5mm")
         self += al.Text("How much do you think was paid as a tip for this bill? (Please enter a number between 0-10, to two decimal places e.g. 1.00)", align="center")
         self += al.Hline()
@@ -201,13 +217,14 @@ class Practice_Feedback(al.HideOnForwardSection):
 class Trials_Page1(al.Page):
 
     def on_first_show(self):
+        n = self.vargs.i
+        
+        self.title = f"Practice trial #{n+1:02}"
         
         # file/target input 
         uploaded_file = "tips.csv"
         target_feature = "tip"
         no_preds, _ = pred(uploaded_file, target_feature)
-        
-        n = self.vargs.i
         
         self += al.Html(html=no_preds[n:n+1].to_html(), name=f"table_{n+1:02}") 
         self += al.Hline()
@@ -217,6 +234,10 @@ class Trials_Page1(al.Page):
 class Trials_Page2(al.Page):
 
     def on_first_show(self):
+        n = self.vargs.i
+        
+        self.title = f"Practice trial #{n+1:02}"
+        self.subtitle = "Feedback"
         
         # get condition 
         cond = "" 
@@ -232,8 +253,6 @@ class Trials_Page2(al.Page):
         uploaded_file = "tips.csv"
         target_feature = "tip"
         no_preds, preds = pred(uploaded_file, target_feature)
-        
-        n = self.vargs.i
         
         self += al.Html(html=no_preds[n:n+1].to_html())
         self += al.Hline()
@@ -287,6 +306,8 @@ class OPG1(al.Page):
     def on_first_show(self):
         item = self.vargs.i
         
+        self.title = f"Main task - trial #{item+1:02} - first estimate"
+        
         # file/target input 
         uploaded_file = "tips.csv"
         target_feature = "tip"
@@ -297,12 +318,16 @@ class OPG1(al.Page):
         self += al.TextEntry(toplab="How much do you think was paid as a tip for this bill? (Please enter a number between 0-10, to two decimal places e.g. 1.00)", name=f"prediction_{item+1:02}", align="center")
         self += al.VerticalSpace("10px")
         
+        #TODO: confidence initial or final estimate? 
         self += al.SingleChoiceButtons("None", "Little", "Some", "A Fair Amount", "A Lot", toplab="How much confidence do you have in your estimate?", name=f"b1_{item+1:02}")
 
 # Algorithm Estimate
 class OPG2(al.Page):
     
     def on_first_show(self):
+        item = self.vargs.i
+        
+        self.title = f"Main task - trial #{item+1:02} - second estimate"
         
         # get condition 
         cond = "" 
@@ -313,8 +338,6 @@ class OPG2(al.Page):
             cond = "Other Person"
         else: 
             cond = "Hybrid"
-            
-        item = self.vargs.i
         
         # file/target input 
         uploaded_file = "tips.csv"
@@ -326,13 +349,7 @@ class OPG2(al.Page):
         self += al.Text("{}'s estimate: ".format(cond) + preds[item:item+1]["{} estimate".format(cond)].to_string(index=False))
         self += al.Text("Your First Estimate: " + self.exp.values.get(f"prediction_{item+1:02}"))
         self += al.TextEntry(toplab="You should now make a second estimate in the box below. This can be the same as your first estimate or amended. (Please enter a number between 0-10, to two decimal places e.g. 1.00)", name=f"pred_{item+1:02}", align="center")
-    
-    def on_first_hide(self):
-        item = self.vargs.i
-        self += al.Text("Your First Estimate: " + self.exp.values.get(f"prediction_{item+1:02}"))
-        #TODO: figure out why name not naming for the second estimate, NoneType????
-        self += al.Text("Your Second Estimate: " + self.exp.values.get(f"pred_{item+1:02}"))
-        
+  
 # bonus
 exp += al.Page(name="bonus") 
 exp.bonus += al.Text("TBD", align="center") 
