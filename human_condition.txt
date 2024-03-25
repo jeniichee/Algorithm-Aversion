@@ -3,4 +3,4 @@ You will have the opportunity to earn additional rewards by making accurate esti
 
 You will be given information about each specific bill, for example, the number of people who were in the party and the time of day that they ate at. You will use this information to help you estimate how much each table paid as a tip. 
 
-In addition to the table of information, you will also be shown a prediction made for each bill by the restaurant manager who has more than five years’ experience. 
+After you make each estimate you will be given advice in the form of an estimate made for the same bill. This estimate is from another person. This person had the same information that you have. 
