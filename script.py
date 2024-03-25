@@ -154,7 +154,7 @@ class Instructions(al.Page):
             self += al.Hline()
    
         self += al.Text(path="data info.txt")  
-        self += al.Style(code=" th, td {padding: 10px;}")    
+        self += al.Style(code=" th, td {padding: 10px;} table, th, td {border: 1px solid black; border-collapse: collapse;}")    
         self += al.Html(html="""
                         <table>
                         <tr>
@@ -279,7 +279,7 @@ class Part2(al.Page):
             cond = "Hybrid"
         
         self += al.Text("""
-                        In part two of the study, you will make your 10 official estimates. 
+                        In part two of the study, you will make your 10 official estimates.
                         In this part of the study, there are bonuses available for more accurate estimates. 
                         As before, you will see the data table with information about each bill. 
                         You will make an estimate of the tip paid for the bill.
@@ -288,7 +288,7 @@ class Part2(al.Page):
                         You will not receive any feedback in this part of the study. 
                         """.format(cond))
         self += al.Hline()
-        self += al.Text("*Incentive/bonus info here*", align="center") #TODO: underline text
+        self += al.Text("<u>*Incentive/bonus info here*</u>", align="center") #TODO: underline text
         self += al.TextArea(toplab="Please type the underlined portion of the text above into the box below to show that you have read the incentive/bonus information.", name="bonus_info")
 
 # 10 different cases for real trials
@@ -306,7 +306,7 @@ class OPG1(al.Page):
     def on_first_show(self):
         item = self.vargs.i
         
-        self.title = f"Main task - trial #{item+1:02} - first estimate"
+        self.title = f"Main task - trial #{item-9:02} - first estimate"
         
         # file/target input 
         uploaded_file = "tips.csv"
@@ -327,7 +327,7 @@ class OPG2(al.Page):
     def on_first_show(self):
         item = self.vargs.i
         
-        self.title = f"Main task - trial #{item+1:02} - second estimate"
+        self.title = f"Main task - trial #{item-9:02} - second estimate"
         
         # get condition 
         cond = "" 
