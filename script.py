@@ -90,24 +90,24 @@ class consent(al.Page):
         self += al.Text("**YOU CANNOT PROCEED TO THE SURVEY WITHOUT RESPONDING TO EACH STATEMENT.**", align="center")
         self += al.Hline()
 
-        self += al.MultipleChoice("Yes", "No", toplab="I have read and understood the information about the study.", min=1, max=1, name="m1", align="left")
+        self += al.MultipleChoice("Yes", "No", toplab="I have read and understood the information about the study.", min=1, max=1, name="m1")
         self += al.MultipleChoice("Yes", "No", toplab="""I understand that my participation is entirely voluntary 
-                                  and that I am free to withdraw at any time throughout, without giving a reason.""", min=1, max=1, name="m2", align="left")
+                                  and that I am free to withdraw at any time throughout, without giving a reason.""", min=1, max=1, name="m2")
         self += al.MultipleChoice("Yes", "No", toplab="""I understand that my involvement in this research is strictly anonymous 
-                                  and my participation is confidential.""", min=1, max=1, name="m3", align="left")
+                                  and my participation is confidential.""", min=1, max=1, name="m3")
         self += al.MultipleChoice("Yes", "No", toplab="I understand that my anonymised data will be published in a public repository.", 
-                                  min=1, max=1, name="m4", align="left")
-        self += al.MultipleChoice("Yes", "No", toplab="I consent to participate in this study.", min=1, max=1, name="m5", align="left")
+                                  min=1, max=1, name="m4")
+        self += al.MultipleChoice("Yes", "No", toplab="I consent to participate in this study.", min=1, max=1, name="m5")
         self += al.MultipleChoice("Yes", "No", toplab="""I understand that the study is being conducted by researchers from 
                                   Queen's University Belfast and that my personal information will be held securely 
-                                  and handled in accordance with the provisions of the Data Protection Act 2018.""", min=1, max=1, name="m6", align="left")
+                                  and handled in accordance with the provisions of the Data Protection Act 2018.""", min=1, max=1, name="m6")
         self += al.Hline()
         self += al.Text("*Please contact the Chief Investigator at the below details if you wish to ask any further questions about the study:*")
-        self += al.Text("**Chief Investigator**: Dr Thomas Schultze at <u>t.schultze@qub.ac.uk.</u>")
+        self += al.Text("**Chief Investigator**: Dr Thomas Schultze at <u>t.schultze@qub.ac.uk.</u>", align="center")
         
 # Age, Gender, Education level & Prolific ID]
 exp.info_consent += al.Page(name="AGEP")
-exp.info_consent.AGEP += al.NumberEntry(toplab="What is your age?", force_input=True, min=0, max=100, name="participant_age", save_data="True")
+exp.info_consent.AGEP += al.NumberEntry(toplab="What is your age?", force_input=True, min=0, max=100, name="participant_age", save_data="True", placeholder="Enter your age")
 exp.info_consent.AGEP += al.SingleChoiceList("Select", "Male", "Female", "Prefer not to say", toplab="What is your gender?", name="sl2")
 exp.info_consent.AGEP += al.SingleChoiceList("Select", "Less than Secondary school", "GCSE's", "A Levels", "Undergraduate Degree", 
                                     "Postgraduate Certificate", "Master's Degree", "Professional Degree", "Doctoral Degree", 
@@ -201,19 +201,21 @@ class Practice_Feedback(al.ForwardOnlySection):
     
     def on_exp_access(self):
         
+        self += al.Page(name="practice")
+        
         # get condition 
         if self.exp.values.get("condition") == 1: 
-            self += al.Text(path="algorithm_condition.txt")
+            self.practice += al.Text(path="algorithm_condition.txt")
             cond = "algorithm"
         ## human
         # if self.exp.condition == "Human":
         elif self.exp.values.get("condition") == 2: 
-            self += al.Text(path="human_condition.txt")
+            self.practice += al.Text(path="human_condition.txt")
             cond = "other person"
         ## hybrid     
         # if self.exp.condition == "Hybrid":
         else: 
-            self += al.Text(path="hybrid_condition.txt")
+            self.practice += al.Text(path="hybrid_condition.txt")
             cond = "hybrid"
             
         self += al.Page(name="Page")
