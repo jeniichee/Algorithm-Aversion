@@ -36,27 +36,28 @@ def pred(file, target):
 
     # cues 
     df_out = df.merge(X_test, left_index=True, right_index=True, how='inner')
-    df_out = df_out.drop(columns=['total_bill_y', 'size_y', 'sex_Female', 
-                                  'sex_Male', 'smoker_No', 'smoker_Yes', 
-                                  'day_Fri', 'day_Sat', 'day_Sun', 'day_Thur', 
-                                  'time_Dinner', 'time_Lunch', 'tip'], axis=1) # drop encoded columns
-    
+    df_out["tip_x"] = ["${:.2f}".format(val) for val in df_out["tip_x"]]
+    df_out = df_out.drop(columns=['tip_y', 'size_y', 'sex_Female', 
+                                'sex_Male', 'smoker_No', 'smoker_Yes', 
+                                'day_Fri', 'day_Sat', 'day_Sun', 'day_Thur', 
+                                'time_Dinner', 'time_Lunch', 'total_bill'], axis=1) # drop encoded columns
+
     # cues w/true values and predictions 
     df_out_preds = df_out.copy()
-    df_out_preds["Algorithm estimate"] = [round(val, 2) for val in y_pred.tolist()]
-    df_out_preds["true value"] = round(y_test, 2)
-    
+    df_out_preds["Algorithm estimate"] = ["${:.2f}".format(val) for val in y_pred.tolist()]
+    df_out_preds["true value"] = ["${:.2f}".format(val) for val in y_test] 
+
     # TODO: hybrid estimates 
     # df_out_preds["hybrid's estimate"] = []
-    
+
     # TODO: human estimates 
     # df_out_preds["human's estimate"] = []
 
     # rename columns 
-    df_out.rename(columns = {"total_bill_x": "total amount of bill", "size_x": "number of guests"}, inplace = True)
-    df_out_preds.rename(columns = {"total_bill_x": "total bill", "size_x": "number of guests"}, inplace = True)
+    df_out.rename(columns = {"tip_x": "tip", "size_x": "number of guests"}, inplace = True)
+    df_out_preds.rename(columns = {"tip_x": "tip", "size_x": "number of guests"}, inplace = True)   
     
-    return df_out.head(100), df_out_preds.head(100)
+    return df_out, df_out_preds
 
 """Initialize experiment"""
 exp = al.Experiment()
@@ -86,23 +87,23 @@ class consent(al.Page):
     
     def on_first_show(self):
         self += al.Text("Please select each box if you consent to each statement.")
-        self += al.Text("YOU CANNOT PROCEED TO THE SURVEY WITHOUT RESPONDING TO EACH STATEMENT.", align="center")
+        self += al.Text("**YOU CANNOT PROCEED TO THE SURVEY WITHOUT RESPONDING TO EACH STATEMENT.**", align="center")
         self += al.Hline()
 
-        self += al.MultipleChoice("Yes", "No", toplab="I have read and understood the information about the study.", min=1, max=1, name="m1")
+        self += al.MultipleChoice("Yes", "No", toplab="I have read and understood the information about the study.", min=1, max=1, name="m1", align="left")
         self += al.MultipleChoice("Yes", "No", toplab="""I understand that my participation is entirely voluntary 
-                                  and that I am free to withdraw at any time throughout, without giving a reason.""", min=1, max=1, name="m2")
+                                  and that I am free to withdraw at any time throughout, without giving a reason.""", min=1, max=1, name="m2", align="left")
         self += al.MultipleChoice("Yes", "No", toplab="""I understand that my involvement in this research is strictly anonymous 
-                                  and my participation is confidential.""", min=1, max=1, name="m3")
+                                  and my participation is confidential.""", min=1, max=1, name="m3", align="left")
         self += al.MultipleChoice("Yes", "No", toplab="I understand that my anonymised data will be published in a public repository.", 
-                                  min=1, max=1, name="m4")
-        self += al.MultipleChoice("Yes", "No", toplab="I consent to participate in this study.", min=1, max=1, name="m5")
+                                  min=1, max=1, name="m4", align="left")
+        self += al.MultipleChoice("Yes", "No", toplab="I consent to participate in this study.", min=1, max=1, name="m5", align="left")
         self += al.MultipleChoice("Yes", "No", toplab="""I understand that the study is being conducted by researchers from 
                                   Queen's University Belfast and that my personal information will be held securely 
-                                  and handled in accordance with the provisions of the Data Protection Act 2018.""", min=1, max=1, name="m6")
+                                  and handled in accordance with the provisions of the Data Protection Act 2018.""", min=1, max=1, name="m6", align="left")
         self += al.Hline()
-        self += al.Text("Please contact the Chief Investigator at the below details if you wish to ask any further questions about the study:")
-        self += al.Text("Chief Investigator: Dr Thomas Schultze at t.schultze@qub.ac.uk.")
+        self += al.Text("*Please contact the Chief Investigator at the below details if you wish to ask any further questions about the study:*")
+        self += al.Text("**Chief Investigator**: Dr Thomas Schultze at <u>t.schultze@qub.ac.uk.</u>")
         
 # Age, Gender, Education level & Prolific ID]
 exp.info_consent += al.Page(name="AGEP")
@@ -175,7 +176,7 @@ class Instructions(al.Page):
                             <th>Size of Party</th>
                         </tr>
                         <tr>
-                            <td>£00.00</td>
+                            <td>$00.00</td>
                             <td>Male/Female</td>
                             <td>Yes/No</td>
                             <td>DD/MM/YY</td>
@@ -185,9 +186,9 @@ class Instructions(al.Page):
                         </table>
                         """, position="center")
         self += al.VerticalSpace("5mm")
-        self += al.NumberEntry(toplab="How much do you think was paid as a tip for this bill? (Please enter a number between 0-10, to two decimal places e.g. 1.00)", name="mt", align="center")
+        self += al.NumberEntry(toplab="How much do you think the total bill was?", name="mt", align="center", force_input=False)
         self += al.Hline()
-        self += al.Text("You will then be told the amount of the actual tip given and will see how accurate your estimate and your advisor's estimates are for each practice task:")
+        self += al.Text("You will then be told the actual total for each bill and will see how accurate your estimate and your advisor's estimates are for each practice task:")
         self += al.Text("""
                                             {}'s estimate: ___
                                             Your estimate: __
@@ -195,27 +196,33 @@ class Instructions(al.Page):
                         """.format(cond))
 
 # practice feedback 
-exp += al.ForwardOnlySection(name="practice_section")
-
-@exp.member(of_section="practice_section")
-class Practice_Feedback(al.Page):
+@exp.member
+class Practice_Feedback(al.ForwardOnlySection):
     
     def on_exp_access(self):
         
         # get condition 
         if self.exp.values.get("condition") == 1: 
+            self += al.Text(path="algorithm_condition.txt")
             cond = "algorithm"
-        elif self.exp.values.get("condition") == 2:
+        ## human
+        # if self.exp.condition == "Human":
+        elif self.exp.values.get("condition") == 2: 
+            self += al.Text(path="human_condition.txt")
             cond = "other person"
+        ## hybrid     
+        # if self.exp.condition == "Hybrid":
         else: 
+            self += al.Text(path="hybrid_condition.txt")
             cond = "hybrid"
+            
+        self += al.Page(name="Page")
         
         # custom instruction  
         #TODO: .format("cond") only showing "Hybrid" :(
-        self += al.Text("Next, you will complete 10 practice estimates. This is just to give you experience before you complete your 10 actual estimates.")
-        self += al.Text("You will see the data table with information about each bill. You will make an estimate of the tip paid for the bill.")
-        self += al.Text("You will then see the estimate from the {} for the tip paid for each bill.".format(cond))
-        self += al.Text("Finally, you will get feedback indicating how close both your estimate and the {}'s estimate were to the actual tip paid.".format(cond))
+        self.Page += al.Text("Next, you will complete 10 practice estimates. This is just to give you experience before you complete your 10 actual estimates.")
+        self.Page += al.Text("You will see the data table with information about each bill. You will make an estimate of the total bill.")
+        self.Page += al.Text("You will then see your own estimate, the estimate of the {}, and the actual total bill.".format(cond))
  
         for n in range(trials):
             self += Trials_Page1(name=f"trial_{n}",  vargs={"i": n})
@@ -231,13 +238,13 @@ class Trials_Page1(al.Page):
         
         # file/target input 
         uploaded_file = "tips.csv"
-        target_feature = "tip"
+        target_feature = "total_bill"
         no_preds, _ = pred(uploaded_file, target_feature)
         
         self += al.Style(code="th, td {padding: 10px;} table, th, td {border: 1px solid black; border-collapse: collapse;} th, td {text: black; text-align: center;} table{width: 100%;}") 
         self += al.Html(html=no_preds[n:n+1].to_html(), name=f"table_{n+1:02}", position="center") 
         self += al.Hline()
-        self += al.NumberEntry(toplab="How much do you think was paid as a tip for this bill? (Please enter a number between 0-10, to two decimal places e.g. 1.00)", min=0, max=10, name=f"prediction_{n+1:02}", align="center")
+        self += al.NumberEntry(toplab="How much do you think the total bill was?", min=0, max=10, name=f"prediction_{n+1:02}", align="center")
         
 #  shows the cues, the advisor’s estimate, and the true value.
 class Trials_Page2(al.Page):
@@ -257,7 +264,7 @@ class Trials_Page2(al.Page):
         
         # file/target input 
         uploaded_file = "tips.csv"
-        target_feature = "tip"
+        target_feature = "total_bill"
         no_preds, preds = pred(uploaded_file, target_feature)
         
         self += al.Style(code="th, td {padding: 10px;} table, th, td {border: 1px solid black; border-collapse: collapse;} th, td {text: black; text-align: center;} table{width: 100%;}") 
@@ -268,38 +275,17 @@ class Trials_Page2(al.Page):
         #TODO:Human estimates column
         self += al.Text("{}'s estimate: ".format(cond) + preds[n:n+1]["Algorithm estimate".format(cond)].to_string(index=False))
         self += al.Text("Your estimate: " + str(self.exp.values.get(f"prediction_{n+1:02}")))
-        self += al.Text("Actual tip: " + preds[n:n+1]["true value"].to_string(index=False))
-
-# part 2+bonus info 
-@exp.member
-class Part2(al.Page):
-    
-    def on_exp_access(self):
-
-        if self.exp.values.get("condition") == 1: 
-            cond = "algorithm"
-        elif self.exp.values.get("condition") == 2:
-            cond = "other person"
-        else: 
-            cond = "hybrid"
-            
-        self += al.Text("In part two of the study, you will make your 10 official estimates.", align="center") 
-        self += al.Text("In this part of the study, there are bonuses available for more accurate estimates.", align="center") 
-        self += al.Text("As before, you will see the data table with information about each bill.", align="center") 
-        self += al.Text("You will make an estimate of the tip paid for the bill.", align="center") 
-        self += al.Text("You will then see the {}'s estimate for the tip paid for each bill.".format(cond), align="center")
-        self += al.Text("You will then have the chance to make a second estimate.", align="center") 
-        self += al.Text("You will not receive any feedback in this part of the study.", align="center") 
-        
-        self += al.Hline()
-        self += al.Text("<u>*Incentive/bonus info here*</u>", align="center") 
-        self += al.TextArea(toplab="Please type the underlined portion of the text above into the box below to show that you have read the incentive/bonus information.", name="bonus_info")
+        self += al.Text("Actual: " + preds[n:n+1]["true value"].to_string(index=False))
 
 # 10 different cases for real trials
 @exp.member
 class Official_Feedback(al.HideOnForwardSection):
         
     def on_exp_access(self):
+        
+        self += al.Page(name="Part2")
+        self.Part2 += al.Text(path="task_instructions.txt")
+        self.Part2 += al.TextArea(toplab="Please type the underlined portion of the text above into the box below to show that you have read the incentive/bonus information.", name="bonus_info")
 
         for item in range(10, 20):
             self += OPG1(name=f"trial_{item}",  vargs={"i": item})
@@ -314,17 +300,16 @@ class OPG1(al.Page):
         
         # file/target input 
         uploaded_file = "tips.csv"
-        target_feature = "tip"
+        target_feature = "total_bill"
         no_preds, _ = pred(uploaded_file, target_feature)
         
         self += al.Style(code="th, td {padding: 10px;} table, th, td {border: 1px solid black; border-collapse: collapse;} th, td {text: black; text-align: center;} table{width: 100%;}") 
         self += al.Html(html=no_preds[item:item+1].to_html(), name=f"table_{item+1:02}", position="center") 
         self += al.Hline()
-        self += al.NumberEntry(toplab="How much do you think was paid as a tip for this bill? (Please enter a number between 0-10, to two decimal places e.g. 1.00)", min=0, max=10, name=f"prediction_{item+1:02}", align="center")
+        self += al.NumberEntry(toplab="How much do you think the total bill was?", min=0, max=10, name=f"prediction_{item+1:02}", align="center")
         self += al.VerticalSpace("10px")
-        
-        #TODO: confidence initial or final estimate? 
-        self += al.SingleChoiceButtons("None", "Little", "Some", "A Fair Amount", "A Lot", toplab="How much confidence do you have in your estimate?", name=f"b1_{item+1:02}")
+
+        self += al.SingleChoiceButtons("None", "Little", "Some", "A Fair Amount", "A Lot", toplab="How confident are in the accuracy of your first estimate?", name=f"b1_{item+1:02}")
 
 # Algorithm Estimate
 class OPG2(al.Page):
@@ -344,15 +329,16 @@ class OPG2(al.Page):
         
         # file/target input 
         uploaded_file = "tips.csv"
-        target_feature = "tip"
+        target_feature = "total_bill"
         no_preds, preds = pred(uploaded_file, target_feature)
         
         self += al.Style(code="th, td {padding: 10px;} table, th, td {border: 1px solid black; border-collapse: collapse;} th, td {text: black; text-align: center;} table{width: 100%;}") 
         self += al.Html(html=no_preds[item:item+1].to_html(), position="center")
         self += al.Hline()
-        self += al.Text("{}'s estimate: ".format(cond) + preds[item:item+1]["{} estimate".format(cond)].to_string(index=False))
         self += al.Text("Your First Estimate: " + str(self.exp.values.get(f"prediction_{item+1:02}")))
-        self += al.NumberEntry(toplab="You should now make a second estimate in the box below. This can be the same as your first estimate or amended. (Please enter a number between 0-10, to two decimal places e.g. 1.00)", min=0, max=10, name=f"pred_{item+1:02}", align="center")
+        self += al.Text("{}'s estimate: ".format(cond) + preds[item:item+1]["{} estimate".format(cond)].to_string(index=False))
+        self += al.NumberEntry(toplab="You should now make a second estimate in the box below.", min=0, max=10, name=f"pred_{item+1:02}", align="center")
+        self += al.SingleChoiceButtons("None", "Little", "Some", "A Fair Amount", "A Lot", toplab="How confident are you in the accuracy of your second estimate?", name=f"b2_{item+1:02}")
   
 # bonus
 exp += al.Page(name="bonus") 

@@ -1,4 +1,3 @@
 All the information shown in this study represents real data from a restaurant.
-Based on this data, you will be asked to estimate the amount that each table of diners paid as a tip for each bill. 
+Based on this data, you will be asked to estimate the total bill for a table of diners. 
 First, you will make estimates for 10 bills. You will base your estimates on the data you are given. For each estimation task, you will see the following screen:
-

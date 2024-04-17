@@ -1,3 +1,0 @@
-This study will have two parts. In part one, you will work on ten practice tasks where you will estimate the amount of the tip given for each bill in a restaurant. You will be given information about each bill to help you make each estimate. 
-In part two, you will work on another ten estimates. After you make each estimate, you will also be given advice in the form of an estimate made for each bill. The advice is the estimate of an algorithm. This algorithm was designed to predict the size of the tips based on the same information that you have.
-You will have the opportunity to earn additional rewards in part two by making accurate estimates. Please read all the information provided carefully. 
