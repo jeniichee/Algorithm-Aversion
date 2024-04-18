@@ -1,9 +1,0 @@
-In part two of the study, you will make your 10 official estimates. On each trial, you will see the data table with information about each bill. You will then make a **first** estimate of the total bill. We will also ask you to rate your **confidence** in the accuracy of this initial estimate.<br>
-
-On the next page, you will see your own initial estimate and your advisor’s estimate for the total bill.<br> 
-
-You will then make a **second estimate**. If you want to retain your initial estimate, simply enter the same number again. Please also indicate your **confidence** in the accuracy of your final estimate.<br>
-
-You will not receive any feedback in this part of the study.<br>
-
-<u>**Important**: If you perform well in this part of the study, you will be eligible for an additional bonus payment of £2. Whether you will receive that bonus depends on the accuracy of your second estimates. The closer your second estimates are to the true values, the more likely it is that you will earn the bonus payment.</u>
