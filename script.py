@@ -12,11 +12,13 @@ content = smuggle("files/content.py")
 """Initialize experiment"""
 exp = al.Experiment()
 trials = 10 
-cond = "" 
 
 """*option A: manually choose*"""
 exp += al.Page(name="setup_page")
 exp.setup_page += al.SingleChoiceButtons('Algorithm', 'Human', 'Hybrid', name = 'condition')
+
+# the scrutanized algorithm
+# same advice LMAO 
 
 # """*option B: random+equal sample size for all conditions*"""
 # @exp.setup 
@@ -70,17 +72,14 @@ exp.intro_info_consent.AGEP += al.SingleChoiceList("Select", "Less than Secondar
                                     toplab="What is the highest level of education you have completed?", name="sl3", force_input=True)
 
 # TODO: validate consent+age+fix empty page if valid inputs 
+# - if no consent, we understand, and we thank you for considering to take our study 
+# - thank you for understanding, under 18 
 @exp.member(of_section="intro_info_consent")
 class Validation(al.Page): 
     
     def on_first_show(self):
-        if int(self.exp.values.get("participant_age")) <= 18:
-            self.title = "Thank you for taking the time to complete our study!"
-            self += al.Text(content.debrief, align="center")
         
-    def on_first_hide(self):
-        
-        if int(self.exp.values.get("participant_age")) <= 18:
+        if int(self.exp.values.get("participant_age")) < 18:
             self.exp.abort(
                 reason="screening",
                 icon="users",
@@ -105,6 +104,9 @@ class Instructions(al.Page):
         else: 
             self += al.Text(content.hybrid_task_info)
             cond = "Hybrid intelligence"
+            
+        # TODO: welcome page on one page 
+        
         
         self += al.Hline()
         self += al.VerticalSpace("5mm")
@@ -132,7 +134,7 @@ class Instructions(al.Page):
                         </table>
                         """, position="center")
         self += al.VerticalSpace("5mm")
-        self += al.NumberEntry(toplab="How much do you think the total bill was?", name="mt", align="center", force_input=False)
+        # self += al.NumberEntry(toplab="How much do you think the total bill was?", name="mt", align="center", force_input=False)
         self += al.Hline()
         self += al.Text("You will then be told the actual total for each bill and will see how accurate your estimate and your advisor's estimates are for each practice task:")
         self += al.Text(f"""
@@ -147,10 +149,11 @@ class Instructions(al.Page):
 # - show estimates w/dollar 
                 
 """Experience Phase Instructions"""
-@exp.member
-class Practice_Feedback(al.ForwardOnlySection):
+exp += al.ForwardOnlySection(name="pagesss")
+@exp.member(of_section="pagesss")
+class Page(al.Page):
     
-    def on_exp_access(self):
+    def on_first_show(self):
         
         # get condition 
         if self.exp.values.get("condition") == 1: 
@@ -159,12 +162,14 @@ class Practice_Feedback(al.ForwardOnlySection):
             cond = "other person"
         else: 
             cond = "hybrid intelligence"
-        
-        # instructions
-        self += al.Page(name="Page")
             
-        self.Page += al.Text(content.exp_instructions.format(cond))
- 
+        self += al.Text(content.exp_instructions.format(cond))
+
+@exp.member
+class Practice_Feedback(al.ForwardOnlySection):
+    
+    def on_exp_access(self):
+    
         for n in range(trials):
             self += Trials_Page1(name=f"trial_{n}",  vargs={"i": n})
             self += Trials_Page2(name=f"trial0_{n}",  vargs={"i": n})
@@ -222,6 +227,12 @@ class Trials_Page2(al.Page):
 """Part 2 task instructions"""
 @exp.member
 class Official_Feedback(al.HideOnForwardSection):
+    
+    # you've now completed part 1, here is part 2
+    # some header 
+    # no need for underlined text, one word is fine
+    # confidence 1 to 5 
+    # remove index
         
     def on_exp_access(self):
         
