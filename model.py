@@ -32,6 +32,7 @@ def pred(file, target):
 
     # cues 
     df_out = df.merge(X_test, left_index=True, right_index=True, how='inner')
+    df_out.index = [''] * len(df_out)
     df_out["tip_x"] = ["${:.2f}".format(val) for val in df_out["tip_x"]]
     df_out = df_out.drop(columns=['tip_y', 'size_y', 'sex_Female', 
                                 'sex_Male', 'smoker_No', 'smoker_Yes', 
@@ -40,9 +41,7 @@ def pred(file, target):
 
     # cues w/true values and predictions 
     df_out_preds = df_out.copy()
-    df_out_preds["Algorithm's estimate"] = ["${:.2f}".format(val) for val in y_pred.tolist()]
-    df_out_preds["Hybrid intelligence's estimate"] = np.nan  
-    df_out_preds["Other person's estimate"] = np.nan
+    df_out_preds["Estimate"] = ["${:.2f}".format(val) for val in y_pred.tolist()]
     
     df_out_preds["true value"] = ["${:.2f}".format(val) for val in y_test] 
 
