@@ -17,6 +17,13 @@ trials = 10
 exp += al.Page(name="setup_page")
 exp.setup_page += al.SingleChoiceButtons('Algorithm', 'Human', 'Hybrid', name = 'condition')
 
+#TODO implement randomizer 
+# - finish validation 
+# TODO: validate consent+age+fix empty page if valid inputs 
+# - if no consent, we understand, and we thank you for considering to take our study 
+# - thank you for understanding, under 18 
+# TODO: review R lol 
+
 # """*option B: random+equal sample size for all conditions*"""
 # @exp.setup 
 # def setup(exp): 
@@ -37,50 +44,50 @@ exp.intro_info_consent.Introduction += al.Text(content.introduction)
 exp.intro_info_consent += al.Page(title="Participant Information Sheet", name="participtant_info")
 exp.intro_info_consent.participtant_info += al.Text(content.participtant_info)
    
-# @exp.member(of_section="intro_info_consent")    
-# class consent(al.Page):
+@exp.member(of_section="intro_info_consent")    
+class consent(al.Page):
     
-#     def on_first_show(self):
+    def on_first_show(self):
         
-#         self += al.Text("Please select each box if you consent to each statement.")
-#         self += al.Text("**YOU CANNOT PROCEED TO THE SURVEY WITHOUT RESPONDING TO EACH STATEMENT.**", align="center")
-#         self += al.Hline()
+        self += al.Text("Please select each box if you consent to each statement.")
+        self += al.Text("**YOU CANNOT PROCEED TO THE SURVEY WITHOUT RESPONDING TO EACH STATEMENT.**", align="center")
+        self += al.Hline()
 
-#         self += al.MultipleChoice("Yes", "No", toplab="I have read and understood the information about the study.", max=1, name="m1", force_input=True, select_hint="Select one")
-#         self += al.MultipleChoice("Yes", "No", toplab="""I understand that my participation is entirely voluntary 
-#                                   and that I am free to withdraw at any time throughout, without giving a reason.""", max=1, name="m2", force_input=True, select_hint="Select one")
-#         self += al.MultipleChoice("Yes", "No", toplab="""I understand that my involvement in this research is strictly anonymous 
-#                                   and my participation is confidential.""", max=1, name="m3", force_input=True, select_hint="Select one")
-#         self += al.MultipleChoice("Yes", "No", toplab="I understand that my anonymised data will be published in a public repository.", max=1, name="m4", force_input=True, select_hint="Select one")
-#         self += al.MultipleChoice("Yes", "No", toplab="I consent to participate in this study.", max=1, name="m5", force_input=True, select_hint="Select one")
-#         self += al.MultipleChoice("Yes", "No", toplab="""I understand that the study is being conducted by researchers from 
-#                                   Queen's University Belfast and that my personal information will be held securely 
-#                                   and handled in accordance with the provisions of the Data Protection Act 2018.""", max=1, name="m6", force_input=True, select_hint="Select one")
-#         self += al.Hline()
-#         self += al.Text("*Please contact the Chief Investigator at the below details if you wish to ask any further questions about the study:*")
-#         self += al.Text("**Chief Investigator**: Dr Thomas Schultze at <u>t.schultze@qub.ac.uk.</u>", align="center")
+        self += al.MultipleChoice("Yes", "No", toplab="I have read and understood the information about the study.", max=1, name="m1", force_input=True, select_hint="Select one")
+        self += al.MultipleChoice("Yes", "No", toplab="""I understand that my participation is entirely voluntary 
+                                  and that I am free to withdraw at any time throughout, without giving a reason.""", max=1, name="m2", force_input=True, select_hint="Select one")
+        self += al.MultipleChoice("Yes", "No", toplab="""I understand that my involvement in this research is strictly anonymous 
+                                  and my participation is confidential.""", max=1, name="m3", force_input=True, select_hint="Select one")
+        self += al.MultipleChoice("Yes", "No", toplab="I understand that my anonymised data will be published in a public repository.", max=1, name="m4", force_input=True, select_hint="Select one")
+        self += al.MultipleChoice("Yes", "No", toplab="I consent to participate in this study.", max=1, name="m5", force_input=True, select_hint="Select one")
+        self += al.MultipleChoice("Yes", "No", toplab="""I understand that the study is being conducted by researchers from 
+                                  Queen's University Belfast and that my personal information will be held securely 
+                                  and handled in accordance with the provisions of the Data Protection Act 2018.""", max=1, name="m6", force_input=True, select_hint="Select one")
+        self += al.Hline()
+        self += al.Text("*Please contact the Chief Investigator at the below details if you wish to ask any further questions about the study:*")
+        self += al.Text("**Chief Investigator**: Dr Thomas Schultze at <u>t.schultze@qub.ac.uk.</u>", align="center")
         
-# # Age, Gender, Education level & Prolific ID
-# exp.intro_info_consent += al.Page(name="AGEP")
-# exp.intro_info_consent.AGEP += al.NumberEntry(toplab="What is your age?", force_input=True, min=0, max=100, name="participant_age", save_data="True", placeholder="Enter your age")
-# exp.intro_info_consent.AGEP += al.SingleChoiceList("Select", "Male", "Female", "Non-binary", "Prefer not to say", toplab="What is your gender?", name="sl2", force_input=True)
-# exp.intro_info_consent.AGEP += al.SingleChoiceList("Select", "Less than Secondary school", "GCSE's", "A Levels", "Undergraduate Degree", 
-#                                     "Postgraduate Certificate", "Master's Degree", "Professional Degree", "Doctoral Degree", 
-#                                     toplab="What is the highest level of education you have completed?", name="sl3", force_input=True)
+# Age, Gender, Education level & Prolific ID
+exp.intro_info_consent += al.Page(name="AGEP")
+exp.intro_info_consent.AGEP += al.NumberEntry(toplab="What is your age?", force_input=True, min=0, max=100, name="participant_age", save_data="True", placeholder="Enter your age")
+exp.intro_info_consent.AGEP += al.SingleChoiceList("Select", "Male", "Female", "Non-binary", "Prefer not to say", toplab="What is your gender?", name="sl2", force_input=True)
+exp.intro_info_consent.AGEP += al.SingleChoiceList("Select", "Less than Secondary school", "GCSE's", "A Levels", "Undergraduate Degree", 
+                                    "Postgraduate Certificate", "Master's Degree", "Professional Degree", "Doctoral Degree", 
+                                    toplab="What is the highest level of education you have completed?", name="sl3", force_input=True)
 
 # TODO: validate consent+age+fix empty page if valid inputs 
 # - if no consent, we understand, and we thank you for considering to take our study 
 # - thank you for understanding, under 18 
-# @exp.member(of_section="intro_info_consent")
-# class Validation(al.Page): 
+@exp.member(of_section="intro_info_consent")
+class Validation(al.Page): 
     
-#     def on_first_show(self):
+    def on_first_hide(self):
         
-#         if int(self.exp.values.get("participant_age")) < 18:
-#             self.exp.abort(
-#                 reason="screening",
-#                 icon="users",
-#                 msg="Sorry, you must be over 18 to participate in the experiment.")
+        if int(self.exp.values.get("participant_age")) < 18:
+            self.exp.abort(
+                reason="screening",
+                icon="users",
+                msg="Sorry, you must be over 18 to participate in the experiment.")
 
 """Task Information & Incentivization """
 exp += al.ForwardOnlySection(name="instructions_section")
@@ -148,7 +155,7 @@ class Instructions(al.Page):
 """Experience Phase Instructions"""
 exp += al.ForwardOnlySection(name="pagesss")
 @exp.member(of_section="pagesss")
-class Practice_Instructions(al.Page):
+class Experience_Phase_Instructions(al.Page):
     
     def on_first_show(self):
         
@@ -232,12 +239,12 @@ class Official(al.HideOnForwardSection):
         self.Part2["bonus_info"].layout.width_sm = [6]
 
         for item in range(10, 20):
-            self += Main_First_Estimate(name=f"trial_{item}",  vargs={"i": item})
-            self += Main_Second_Estimate(name=f"trial0_{item}",  vargs={"i": item})
+            self += Main_Estimate(name=f"trial_{item}",  vargs={"i": item})
+            self += Second_Estimate(name=f"trial0_{item}",  vargs={"i": item})
 
 """Part 2 Estimates"""
 # 1st Estimate + confidence
-class Main_First_Estimate(al.Page):
+class Main_Estimate(al.Page):
     
     def on_first_show(self):
         item = self.vargs.i
@@ -258,7 +265,7 @@ class Main_First_Estimate(al.Page):
         self += al.SingleChoiceButtons("", "", "", "", "", toplab="How confident are you in the accuracy of your first estimate?", leftlab="not at all confident", rightlab="very confident", name=f"b1_{item+1:02}")
 
 # 2nd Estimate + advisor estimate + confidence 
-class Main_Second_Estimate(al.Page):
+class Second_Estimate(al.Page):
     
     def on_first_show(self):
         item = self.vargs.i
