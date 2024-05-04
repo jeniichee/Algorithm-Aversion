@@ -17,12 +17,6 @@ trials = 10
 exp += al.Page(name="setup_page")
 exp.setup_page += al.SingleChoiceButtons('Algorithm', 'Human', 'Hybrid', name = 'condition')
 
-#TODO implement randomizer 
-# - finish validation 
-# TODO: validate consent+age+fix empty page if valid inputs 
-# - if no consent, we understand, and we thank you for considering to take our study 
-# - thank you for understanding, under 18 
-# TODO: review R lol 
 
 # """*option B: random+equal sample size for all conditions*"""
 # @exp.setup 
@@ -78,7 +72,7 @@ class consent(al.Page):
                 self.exp.abort(
                 reason="screening",
                 icon="users",
-                msg="Thank you for your interest in our experiment!")
+                msg="Thank you for considering our study!")
         
 # Age, Gender, Education level & Prolific ID
 @exp.member(of_section="intro_info_consent")    
