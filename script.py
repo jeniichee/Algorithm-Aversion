@@ -43,6 +43,10 @@ exp.intro_info_consent += al.Page(name="Introduction")
 exp.intro_info_consent.Introduction += al.Text(content.introduction)
 exp.intro_info_consent += al.Page(title="Participant Information Sheet", name="participtant_info")
 exp.intro_info_consent.participtant_info += al.Text(content.participtant_info)
+
+# TODO: validate consent+age+fix empty page if valid inputs 
+# - if no consent, we understand, and we thank you for considering to take our study 
+# - thank you for understanding, under 18 
    
 @exp.member(of_section="intro_info_consent")    
 class consent(al.Page):
@@ -67,22 +71,27 @@ class consent(al.Page):
         self += al.Text("*Please contact the Chief Investigator at the below details if you wish to ask any further questions about the study:*")
         self += al.Text("**Chief Investigator**: Dr Thomas Schultze at <u>t.schultze@qub.ac.uk.</u>", align="center")
         
+    def on_first_hide(self):
+        for i in range(1,7): 
+            print(self.exp.values.get(f"m{i}"))
+            if self.exp.values.get(f"m{i}")["choice2"] == True: 
+                self.exp.abort(
+                reason="screening",
+                icon="users",
+                msg="Thank you for your interest in our experiment!")
+        
 # Age, Gender, Education level & Prolific ID
-exp.intro_info_consent += al.Page(name="AGEP")
-exp.intro_info_consent.AGEP += al.NumberEntry(toplab="What is your age?", force_input=True, min=0, max=100, name="participant_age", save_data="True", placeholder="Enter your age")
-exp.intro_info_consent.AGEP += al.SingleChoiceList("Select", "Male", "Female", "Non-binary", "Prefer not to say", toplab="What is your gender?", name="sl2", force_input=True)
-exp.intro_info_consent.AGEP += al.SingleChoiceList("Select", "Less than Secondary school", "GCSE's", "A Levels", "Undergraduate Degree", 
+@exp.member(of_section="intro_info_consent")    
+class AGEP(al.Page):
+    
+    def on_first_show(self):
+        self += al.NumberEntry(toplab="What is your age?", force_input=True, min=0, max=100, name="participant_age", save_data="True", placeholder="Enter your age")
+        self += al.SingleChoiceList("Select", "Male", "Female", "Non-binary", "Prefer not to say", toplab="What is your gender?", name="sl2", force_input=True)
+        self += al.SingleChoiceList("Select", "Less than Secondary school", "GCSE's", "A Levels", "Undergraduate Degree", 
                                     "Postgraduate Certificate", "Master's Degree", "Professional Degree", "Doctoral Degree", 
                                     toplab="What is the highest level of education you have completed?", name="sl3", force_input=True)
-
-# TODO: validate consent+age+fix empty page if valid inputs 
-# - if no consent, we understand, and we thank you for considering to take our study 
-# - thank you for understanding, under 18 
-@exp.member(of_section="intro_info_consent")
-class Validation(al.Page): 
-    
-    def on_first_hide(self):
         
+    def on_first_hide(self):
         if int(self.exp.values.get("participant_age")) < 18:
             self.exp.abort(
                 reason="screening",
@@ -97,7 +106,6 @@ class Welcome(al.Page):
     title = "Welcome!"
     
     def on_first_show(self):
-        
         if self.exp.values.get("condition") == 1: 
             self += al.Text(content.algorithm_task_info)
         elif self.exp.values.get("condition") == 2: 
@@ -239,12 +247,12 @@ class Official(al.HideOnForwardSection):
         self.Part2["bonus_info"].layout.width_sm = [6]
 
         for item in range(10, 20):
-            self += Main_Estimate(name=f"trial_{item}",  vargs={"i": item})
+            self += First_Estimate(name=f"trial_{item}",  vargs={"i": item})
             self += Second_Estimate(name=f"trial0_{item}",  vargs={"i": item})
 
 """Part 2 Estimates"""
 # 1st Estimate + confidence
-class Main_Estimate(al.Page):
+class First_Estimate(al.Page):
     
     def on_first_show(self):
         item = self.vargs.i
@@ -290,12 +298,8 @@ class Second_Estimate(al.Page):
         self += al.Hline()
         self += al.Text("Your First Estimate: ${:.2f}".format((int(self.exp.values.get(f"prediction_{item+1:02}")))))
         self += al.Text("{}'s estimate: ".format(cond) + preds[item:item+1]["Estimate"].to_string(index=False))
-        self += al.NumberEntry(toplab="You should now make a second estimate in the box below.", min=0, max=10, name=f"pred_{item+1:02}", align="center")
+        self += al.NumberEntry(toplab="You should now make a second estimate in the box below.", min=0, max=100, name=f"pred_{item+1:02}", align="center")
         self += al.SingleChoiceButtons("", "", "", "", "", toplab="How confident are you in the accuracy of your second estimate?", leftlab="not at all confident", rightlab="very confident", name=f"b2_{item+1:02}")
-
-# bonus
-exp += al.Page(name="bonus") 
-exp.bonus += al.Text("TBD", align="center") 
 
 # debrief 
 exp += al.Page(name="debrief", title="Thank you for taking the time to complete our study!")

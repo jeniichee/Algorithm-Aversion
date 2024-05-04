@@ -6,7 +6,7 @@ Your participation is entirely voluntary. You can end the survey at any point, f
 """
 
 participtant_info = """
-<u> **Thank you for considering participating in our study. It is important that you understand why the research is being carried out and what your participation will involve. Please read the following information and let the researchers know if you have any further questions.** </u><br>
+**Thank you for considering participating in our study. It is important that you understand why the research is being carried out and what your participation will involve. Please read the following information and let the researchers know if you have any further questions.** <br>
 
    
 <u> **Who is conducting the study?** </u><br>
