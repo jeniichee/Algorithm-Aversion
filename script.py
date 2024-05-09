@@ -24,13 +24,6 @@ exp.setup_page += al.SingleChoiceButtons('Algorithm', 'Human', 'Hybrid', name = 
 #     randomizer = al.ListRandomizer.balanced("Human", "Algorithm", "Hybrid", exp=exp) 
 #     exp.condition = randomizer.get_condition()
 
-# if exp.condition == "Algorithm": 
-# cond = "Algorithm"
-# # if exp.condition == "Human":
-# cond = "Other person"   
-# if self.exp.condition == "Hybrid":
-# cond = "Hybrid" 
-
 """Introduction, participtant information, and consent"""
 exp += al.ForwardOnlySection(name="intro_info_consent")
 exp.intro_info_consent += al.Page(name="Introduction")
@@ -38,10 +31,7 @@ exp.intro_info_consent.Introduction += al.Text(content.introduction)
 exp.intro_info_consent += al.Page(title="Participant Information Sheet", name="participtant_info")
 exp.intro_info_consent.participtant_info += al.Text(content.participtant_info)
 
-# TODO: validate consent+age+fix empty page if valid inputs 
-# - if no consent, we understand, and we thank you for considering to take our study 
-# - thank you for understanding, under 18 
-   
+# Consent page 
 @exp.member(of_section="intro_info_consent")    
 class consent(al.Page):
     
@@ -67,19 +57,18 @@ class consent(al.Page):
         
     def on_first_hide(self):
         for i in range(1,7): 
-            print(self.exp.values.get(f"m{i}"))
             if self.exp.values.get(f"m{i}")["choice2"] == True: 
                 self.exp.abort(
                 reason="screening",
                 icon="users",
-                msg="Thank you for considering our study!")
+                msg="Thank you for your interest and consideration in our study!")
         
-# Age, Gender, Education level & Prolific ID
+# Age, Gender, Education level
 @exp.member(of_section="intro_info_consent")    
 class AGEP(al.Page):
     
     def on_first_show(self):
-        self += al.NumberEntry(toplab="What is your age?", force_input=True, min=0, max=100, name="participant_age", save_data="True", placeholder="Enter your age")
+        self += al.NumberEntry(toplab="What is your age?", force_input=True, min=0, max=100, name="participant_age", placeholder="Enter your age")
         self += al.SingleChoiceList("Select", "Male", "Female", "Non-binary", "Prefer not to say", toplab="What is your gender?", name="sl2", force_input=True)
         self += al.SingleChoiceList("Select", "Less than Secondary school", "GCSE's", "A Levels", "Undergraduate Degree", 
                                     "Postgraduate Certificate", "Master's Degree", "Professional Degree", "Doctoral Degree", 
@@ -92,7 +81,7 @@ class AGEP(al.Page):
                 icon="users",
                 msg="Sorry, you must be over 18 to participate in the experiment.")
 
-"""Task Information & Incentivization """
+"""Task Information & Incentivization"""
 exp += al.ForwardOnlySection(name="instructions_section")
 @exp.member(of_section="instructions_section")
 class Welcome(al.Page): 
@@ -118,7 +107,7 @@ class Instructions(al.Page):
         elif self.exp.values.get("condition") == 2: 
             cond = "Other person"
         else: 
-            cond = "Scrutanized algorithm"
+            cond = "Scrutinised algorithm"
         
         self += al.Hline()
         self += al.VerticalSpace("5mm")
@@ -167,7 +156,7 @@ class Experience_Phase_Instructions(al.Page):
         elif self.exp.values.get("condition") == 2: 
             cond = "other person"
         else: 
-            cond = "scrutanized algorithm"
+            cond = "scrutinised algorithm"
             
         self += al.Text(content.exp_instructions.format(cond))
 
@@ -176,7 +165,7 @@ class Practice(al.ForwardOnlySection):
     
     def on_exp_access(self):
     
-        for n in range(trials):
+        for n in range(12, 22):
             self += Practice_Estimate(name=f"trial_{n}",  vargs={"i": n})
             self += Practice_Feedback(name=f"trial0_{n}",  vargs={"i": n})
 
@@ -187,7 +176,7 @@ class Practice_Estimate(al.Page):
     def on_first_show(self):
         n = self.vargs.i
         
-        self.title = f"Practice Trial #{n+1:02}" 
+        self.title = f"Practice Trial #{n-11:02}" 
         
         # file/target input 
         uploaded_file = "tips.csv"
@@ -205,14 +194,14 @@ class Practice_Feedback(al.Page):
     def on_first_show(self):
         n = self.vargs.i
         
-        self.title = f"Practice Trial #{n+1:02}"
+        self.title = f"Practice Trial #{n-11:02}"
         
         if self.exp.values.get("condition") == 1: 
             cond = "Algorithm"
         elif self.exp.values.get("condition") == 2:
             cond = "Other person"
         else: 
-            cond = "Scrutanized algorithm"
+            cond = "Scrutinised algorithm"
         
         # file/target input 
         uploaded_file = "tips.csv"
@@ -240,7 +229,7 @@ class Official(al.HideOnForwardSection):
         self.Part2 += al.MatchEntry(leftlab="Please type <u>'I understand'</u> into the box below to show that you have read the incentive/bonus information.", pattern=r"I understand", name="bonus_info")
         self.Part2["bonus_info"].layout.width_sm = [6]
 
-        for item in range(10, 20):
+        for item in range(22, 32):
             self += First_Estimate(name=f"trial_{item}",  vargs={"i": item})
             self += Second_Estimate(name=f"trial0_{item}",  vargs={"i": item})
 
@@ -251,7 +240,7 @@ class First_Estimate(al.Page):
     def on_first_show(self):
         item = self.vargs.i
         
-        self.title = f"Main Task - Trial #{item-9:02} - First Estimate"
+        self.title = f"Main Task - Trial #{item-21:02} - First Estimate"
         
         # file/target input 
         uploaded_file = "tips.csv"
@@ -272,7 +261,7 @@ class Second_Estimate(al.Page):
     def on_first_show(self):
         item = self.vargs.i
         
-        self.title = f"Main Task - Trial #{item-9:02} - Second Estimate"
+        self.title = f"Main Task - Trial #{item-21:02} - Second Estimate"
         
         # get condition 
         if self.exp.values.get("condition") == 1: 
@@ -280,7 +269,7 @@ class Second_Estimate(al.Page):
         elif self.exp.values.get("condition") == 2:
             cond = "Other person"
         else: 
-            cond = "Hybrid"
+            cond = "Scrutinised algorithm"
         
         # file/target input 
         uploaded_file = "tips.csv"

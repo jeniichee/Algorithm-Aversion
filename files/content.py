@@ -129,7 +129,7 @@ This algorithm was designed to predict the total bill based on the same informat
 
 This algorithm will serve as your advisor in the next phase of the experiment.<br>
 
-In part two, you will work on another ten estimates. After you make each estimate, you will also be given advice in the form of the estimate the scrutanized algorithm made for that bill. 
+In part two, you will work on another ten estimates. After you make each estimate, you will also be given advice in the form of the estimate the scrutinised algorithm made for that bill. 
 
 You will have the opportunity to earn additional rewards in part two by making accurate estimates. Please read all the information provided carefully. 
 """
