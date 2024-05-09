@@ -68,10 +68,22 @@ Based on this data, you will be asked to estimate the total bill for a table of 
 First, you will make estimates for 10 bills. You will base your estimates on the data you are given. For each estimation task, you will see the following screen:
 """
 
-exp_instructions = """
+human_exp_instructions = """
 Next, you will complete 10 practice estimates. This is just to give you experience before you complete your 10 actual estimates. 
 You will see the data table with information about each bill. You will make an estimate of the total bill.
-You will then see your own estimate, the estimate of the {}, and the actual total bill. 
+You will then see your own estimate, the estimate of the other person, and the actual total bill. 
+"""
+
+algorithm_exp_instructions = """
+Next, you will complete 10 practice estimates. This is just to give you experience before you complete your 10 actual estimates. 
+You will see the data table with information about each bill. You will make an estimate of the total bill.
+You will then see your own estimate, the estimate of the algorithm, and the actual total bill. 
+"""
+
+hybrid_exp_instructions = """
+Next, you will complete 10 practice estimates. This is just to give you experience before you complete your 10 actual estimates. 
+You will see the data table with information about each bill. You will make an estimate of the total bill.
+You will then see your own estimate, the estimate of the scrutinised algorithm, and the actual total bill. 
 """
 
 main_task_instructions = """

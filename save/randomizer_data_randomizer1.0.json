@@ -1,0 +1,1086 @@
+{
+    "name": "randomizer",
+    "exp_id": "93997e086bc74bfa9a5824844c290eab",
+    "exp_version": "1.0",
+    "inclusive": false,
+    "type": "randomizer_data",
+    "slots": [
+        {
+            "label": "Hybrid",
+            "session_groups": [
+                {
+                    "sessions": [
+                        "sid-dc3e0306fbe94297a14efa24a82a287d"
+                    ],
+                    "aborted_sessions": [],
+                    "expired_sessions": []
+                }
+            ],
+            "finished_sessions": [],
+            "aborted_sessions": [
+                {
+                    "sessions": [],
+                    "aborted_sessions": [
+                        "sid-ef3e6f996d284913a38297b438cc51cc"
+                    ],
+                    "expired_sessions": []
+                },
+                {
+                    "sessions": [],
+                    "aborted_sessions": [
+                        "sid-62f6cc290d404cc7bdcc82d2825e7738"
+                    ],
+                    "expired_sessions": []
+                }
+            ],
+            "expired_sessions": []
+        },
+        {
+            "label": "Human",
+            "session_groups": [],
+            "finished_sessions": [],
+            "aborted_sessions": [],
+            "expired_sessions": []
+        },
+        {
+            "label": "Algorithm",
+            "session_groups": [],
+            "finished_sessions": [],
+            "aborted_sessions": [],
+            "expired_sessions": []
+        },
+        {
+            "label": "Algorithm",
+            "session_groups": [],
+            "finished_sessions": [],
+            "aborted_sessions": [],
+            "expired_sessions": []
+        },
+        {
+            "label": "Hybrid",
+            "session_groups": [],
+            "finished_sessions": [],
+            "aborted_sessions": [],
+            "expired_sessions": []
+        },
+        {
+            "label": "Human",
+            "session_groups": [],
+            "finished_sessions": [],
+            "aborted_sessions": [],
+            "expired_sessions": []
+        },
+        {
+            "label": "Human",
+            "session_groups": [],
+            "finished_sessions": [],
+            "aborted_sessions": [],
+            "expired_sessions": []
+        },
+        {
+            "label": "Human",
+            "session_groups": [],
+            "finished_sessions": [],
+            "aborted_sessions": [],
+            "expired_sessions": []
+        },
+        {
+            "label": "Human",
+            "session_groups": [],
+            "finished_sessions": [],
+            "aborted_sessions": [],
+            "expired_sessions": []
+        },
+        {
+            "label": "Human",
+            "session_groups": [],
+            "finished_sessions": [],
+            "aborted_sessions": [],
+            "expired_sessions": []
+        },
+        {
+            "label": "Human",
+            "session_groups": [],
+            "finished_sessions": [],
+            "aborted_sessions": [],
+            "expired_sessions": []
+        },
+        {
+            "label": "Algorithm",
+            "session_groups": [],
+            "finished_sessions": [],
+            "aborted_sessions": [],
+            "expired_sessions": []
+        },
+        {
+            "label": "Hybrid",
+            "session_groups": [],
+            "finished_sessions": [],
+            "aborted_sessions": [],
+            "expired_sessions": []
+        },
+        {
+            "label": "Algorithm",
+            "session_groups": [],
+            "finished_sessions": [],
+            "aborted_sessions": [],
+            "expired_sessions": []
+        },
+        {
+            "label": "Algorithm",
+            "session_groups": [],
+            "finished_sessions": [],
+            "aborted_sessions": [],
+            "expired_sessions": []
+        },
+        {
+            "label": "Human",
+            "session_groups": [],
+            "finished_sessions": [],
+            "aborted_sessions": [],
+            "expired_sessions": []
+        },
+        {
+            "label": "Algorithm",
+            "session_groups": [],
+            "finished_sessions": [],
+            "aborted_sessions": [],
+            "expired_sessions": []
+        },
+        {
+            "label": "Human",
+            "session_groups": [],
+            "finished_sessions": [],
+            "aborted_sessions": [],
+            "expired_sessions": []
+        },
+        {
+            "label": "Algorithm",
+            "session_groups": [],
+            "finished_sessions": [],
+            "aborted_sessions": [],
+            "expired_sessions": []
+        },
+        {
+            "label": "Algorithm",
+            "session_groups": [],
+            "finished_sessions": [],
+            "aborted_sessions": [],
+            "expired_sessions": []
+        },
+        {
+            "label": "Human",
+            "session_groups": [],
+            "finished_sessions": [],
+            "aborted_sessions": [],
+            "expired_sessions": []
+        },
+        {
+            "label": "Algorithm",
+            "session_groups": [],
+            "finished_sessions": [],
+            "aborted_sessions": [],
+            "expired_sessions": []
+        },
+        {
+            "label": "Hybrid",
+            "session_groups": [],
+            "finished_sessions": [],
+            "aborted_sessions": [],
+            "expired_sessions": []
+        },
+        {
+            "label": "Human",
+            "session_groups": [],
+            "finished_sessions": [],
+            "aborted_sessions": [],
+            "expired_sessions": []
+        },
+        {
+            "label": "Algorithm",
+            "session_groups": [],
+            "finished_sessions": [],
+            "aborted_sessions": [],
+            "expired_sessions": []
+        },
+        {
+            "label": "Human",
+            "session_groups": [],
+            "finished_sessions": [],
+            "aborted_sessions": [],
+            "expired_sessions": []
+        },
+        {
+            "label": "Algorithm",
+            "session_groups": [],
+            "finished_sessions": [],
+            "aborted_sessions": [],
+            "expired_sessions": []
+        },
+        {
+            "label": "Algorithm",
+            "session_groups": [],
+            "finished_sessions": [],
+            "aborted_sessions": [],
+            "expired_sessions": []
+        },
+        {
+            "label": "Hybrid",
+            "session_groups": [],
+            "finished_sessions": [],
+            "aborted_sessions": [],
+            "expired_sessions": []
+        },
+        {
+            "label": "Algorithm",
+            "session_groups": [],
+            "finished_sessions": [],
+            "aborted_sessions": [],
+            "expired_sessions": []
+        },
+        {
+            "label": "Hybrid",
+            "session_groups": [],
+            "finished_sessions": [],
+            "aborted_sessions": [],
+            "expired_sessions": []
+        },
+        {
+            "label": "Algorithm",
+            "session_groups": [],
+            "finished_sessions": [],
+            "aborted_sessions": [],
+            "expired_sessions": []
+        },
+        {
+            "label": "Human",
+            "session_groups": [],
+            "finished_sessions": [],
+            "aborted_sessions": [],
+            "expired_sessions": []
+        },
+        {
+            "label": "Human",
+            "session_groups": [],
+            "finished_sessions": [],
+            "aborted_sessions": [],
+            "expired_sessions": []
+        },
+        {
+            "label": "Human",
+            "session_groups": [],
+            "finished_sessions": [],
+            "aborted_sessions": [],
+            "expired_sessions": []
+        },
+        {
+            "label": "Human",
+            "session_groups": [],
+            "finished_sessions": [],
+            "aborted_sessions": [],
+            "expired_sessions": []
+        },
+        {
+            "label": "Human",
+            "session_groups": [],
+            "finished_sessions": [],
+            "aborted_sessions": [],
+            "expired_sessions": []
+        },
+        {
+            "label": "Algorithm",
+            "session_groups": [],
+            "finished_sessions": [],
+            "aborted_sessions": [],
+            "expired_sessions": []
+        },
+        {
+            "label": "Algorithm",
+            "session_groups": [],
+            "finished_sessions": [],
+            "aborted_sessions": [],
+            "expired_sessions": []
+        },
+        {
+            "label": "Algorithm",
+            "session_groups": [],
+            "finished_sessions": [],
+            "aborted_sessions": [],
+            "expired_sessions": []
+        },
+        {
+            "label": "Hybrid",
+            "session_groups": [],
+            "finished_sessions": [],
+            "aborted_sessions": [],
+            "expired_sessions": []
+        },
+        {
+            "label": "Hybrid",
+            "session_groups": [],
+            "finished_sessions": [],
+            "aborted_sessions": [],
+            "expired_sessions": []
+        },
+        {
+            "label": "Human",
+            "session_groups": [],
+            "finished_sessions": [],
+            "aborted_sessions": [],
+            "expired_sessions": []
+        },
+        {
+            "label": "Human",
+            "session_groups": [],
+            "finished_sessions": [],
+            "aborted_sessions": [],
+            "expired_sessions": []
+        },
+        {
+            "label": "Algorithm",
+            "session_groups": [],
+            "finished_sessions": [],
+            "aborted_sessions": [],
+            "expired_sessions": []
+        },
+        {
+            "label": "Algorithm",
+            "session_groups": [],
+            "finished_sessions": [],
+            "aborted_sessions": [],
+            "expired_sessions": []
+        },
+        {
+            "label": "Hybrid",
+            "session_groups": [],
+            "finished_sessions": [],
+            "aborted_sessions": [],
+            "expired_sessions": []
+        },
+        {
+            "label": "Algorithm",
+            "session_groups": [],
+            "finished_sessions": [],
+            "aborted_sessions": [],
+            "expired_sessions": []
+        },
+        {
+            "label": "Algorithm",
+            "session_groups": [],
+            "finished_sessions": [],
+            "aborted_sessions": [],
+            "expired_sessions": []
+        },
+        {
+            "label": "Algorithm",
+            "session_groups": [],
+            "finished_sessions": [],
+            "aborted_sessions": [],
+            "expired_sessions": []
+        },
+        {
+            "label": "Human",
+            "session_groups": [],
+            "finished_sessions": [],
+            "aborted_sessions": [],
+            "expired_sessions": []
+        },
+        {
+            "label": "Human",
+            "session_groups": [],
+            "finished_sessions": [],
+            "aborted_sessions": [],
+            "expired_sessions": []
+        },
+        {
+            "label": "Hybrid",
+            "session_groups": [],
+            "finished_sessions": [],
+            "aborted_sessions": [],
+            "expired_sessions": []
+        },
+        {
+            "label": "Hybrid",
+            "session_groups": [],
+            "finished_sessions": [],
+            "aborted_sessions": [],
+            "expired_sessions": []
+        },
+        {
+            "label": "Algorithm",
+            "session_groups": [],
+            "finished_sessions": [],
+            "aborted_sessions": [],
+            "expired_sessions": []
+        },
+        {
+            "label": "Human",
+            "session_groups": [],
+            "finished_sessions": [],
+            "aborted_sessions": [],
+            "expired_sessions": []
+        },
+        {
+            "label": "Hybrid",
+            "session_groups": [],
+            "finished_sessions": [],
+            "aborted_sessions": [],
+            "expired_sessions": []
+        },
+        {
+            "label": "Human",
+            "session_groups": [],
+            "finished_sessions": [],
+            "aborted_sessions": [],
+            "expired_sessions": []
+        },
+        {
+            "label": "Human",
+            "session_groups": [],
+            "finished_sessions": [],
+            "aborted_sessions": [],
+            "expired_sessions": []
+        },
+        {
+            "label": "Algorithm",
+            "session_groups": [],
+            "finished_sessions": [],
+            "aborted_sessions": [],
+            "expired_sessions": []
+        },
+        {
+            "label": "Algorithm",
+            "session_groups": [],
+            "finished_sessions": [],
+            "aborted_sessions": [],
+            "expired_sessions": []
+        },
+        {
+            "label": "Human",
+            "session_groups": [],
+            "finished_sessions": [],
+            "aborted_sessions": [],
+            "expired_sessions": []
+        },
+        {
+            "label": "Hybrid",
+            "session_groups": [],
+            "finished_sessions": [],
+            "aborted_sessions": [],
+            "expired_sessions": []
+        },
+        {
+            "label": "Algorithm",
+            "session_groups": [],
+            "finished_sessions": [],
+            "aborted_sessions": [],
+            "expired_sessions": []
+        },
+        {
+            "label": "Hybrid",
+            "session_groups": [],
+            "finished_sessions": [],
+            "aborted_sessions": [],
+            "expired_sessions": []
+        },
+        {
+            "label": "Hybrid",
+            "session_groups": [],
+            "finished_sessions": [],
+            "aborted_sessions": [],
+            "expired_sessions": []
+        },
+        {
+            "label": "Algorithm",
+            "session_groups": [],
+            "finished_sessions": [],
+            "aborted_sessions": [],
+            "expired_sessions": []
+        },
+        {
+            "label": "Algorithm",
+            "session_groups": [],
+            "finished_sessions": [],
+            "aborted_sessions": [],
+            "expired_sessions": []
+        },
+        {
+            "label": "Human",
+            "session_groups": [],
+            "finished_sessions": [],
+            "aborted_sessions": [],
+            "expired_sessions": []
+        },
+        {
+            "label": "Human",
+            "session_groups": [],
+            "finished_sessions": [],
+            "aborted_sessions": [],
+            "expired_sessions": []
+        },
+        {
+            "label": "Algorithm",
+            "session_groups": [],
+            "finished_sessions": [],
+            "aborted_sessions": [],
+            "expired_sessions": []
+        },
+        {
+            "label": "Algorithm",
+            "session_groups": [],
+            "finished_sessions": [],
+            "aborted_sessions": [],
+            "expired_sessions": []
+        },
+        {
+            "label": "Algorithm",
+            "session_groups": [],
+            "finished_sessions": [],
+            "aborted_sessions": [],
+            "expired_sessions": []
+        },
+        {
+            "label": "Hybrid",
+            "session_groups": [],
+            "finished_sessions": [],
+            "aborted_sessions": [],
+            "expired_sessions": []
+        },
+        {
+            "label": "Hybrid",
+            "session_groups": [],
+            "finished_sessions": [],
+            "aborted_sessions": [],
+            "expired_sessions": []
+        },
+        {
+            "label": "Human",
+            "session_groups": [],
+            "finished_sessions": [],
+            "aborted_sessions": [],
+            "expired_sessions": []
+        },
+        {
+            "label": "Human",
+            "session_groups": [],
+            "finished_sessions": [],
+            "aborted_sessions": [],
+            "expired_sessions": []
+        },
+        {
+            "label": "Algorithm",
+            "session_groups": [],
+            "finished_sessions": [],
+            "aborted_sessions": [],
+            "expired_sessions": []
+        },
+        {
+            "label": "Human",
+            "session_groups": [],
+            "finished_sessions": [],
+            "aborted_sessions": [],
+            "expired_sessions": []
+        },
+        {
+            "label": "Algorithm",
+            "session_groups": [],
+            "finished_sessions": [],
+            "aborted_sessions": [],
+            "expired_sessions": []
+        },
+        {
+            "label": "Hybrid",
+            "session_groups": [],
+            "finished_sessions": [],
+            "aborted_sessions": [],
+            "expired_sessions": []
+        },
+        {
+            "label": "Hybrid",
+            "session_groups": [],
+            "finished_sessions": [],
+            "aborted_sessions": [],
+            "expired_sessions": []
+        },
+        {
+            "label": "Algorithm",
+            "session_groups": [],
+            "finished_sessions": [],
+            "aborted_sessions": [],
+            "expired_sessions": []
+        },
+        {
+            "label": "Algorithm",
+            "session_groups": [],
+            "finished_sessions": [],
+            "aborted_sessions": [],
+            "expired_sessions": []
+        },
+        {
+            "label": "Algorithm",
+            "session_groups": [],
+            "finished_sessions": [],
+            "aborted_sessions": [],
+            "expired_sessions": []
+        },
+        {
+            "label": "Human",
+            "session_groups": [],
+            "finished_sessions": [],
+            "aborted_sessions": [],
+            "expired_sessions": []
+        },
+        {
+            "label": "Human",
+            "session_groups": [],
+            "finished_sessions": [],
+            "aborted_sessions": [],
+            "expired_sessions": []
+        },
+        {
+            "label": "Hybrid",
+            "session_groups": [],
+            "finished_sessions": [],
+            "aborted_sessions": [],
+            "expired_sessions": []
+        },
+        {
+            "label": "Hybrid",
+            "session_groups": [],
+            "finished_sessions": [],
+            "aborted_sessions": [],
+            "expired_sessions": []
+        },
+        {
+            "label": "Hybrid",
+            "session_groups": [],
+            "finished_sessions": [],
+            "aborted_sessions": [],
+            "expired_sessions": []
+        },
+        {
+            "label": "Algorithm",
+            "session_groups": [],
+            "finished_sessions": [],
+            "aborted_sessions": [],
+            "expired_sessions": []
+        },
+        {
+            "label": "Human",
+            "session_groups": [],
+            "finished_sessions": [],
+            "aborted_sessions": [],
+            "expired_sessions": []
+        },
+        {
+            "label": "Algorithm",
+            "session_groups": [],
+            "finished_sessions": [],
+            "aborted_sessions": [],
+            "expired_sessions": []
+        },
+        {
+            "label": "Human",
+            "session_groups": [],
+            "finished_sessions": [],
+            "aborted_sessions": [],
+            "expired_sessions": []
+        },
+        {
+            "label": "Hybrid",
+            "session_groups": [],
+            "finished_sessions": [],
+            "aborted_sessions": [],
+            "expired_sessions": []
+        },
+        {
+            "label": "Algorithm",
+            "session_groups": [],
+            "finished_sessions": [],
+            "aborted_sessions": [],
+            "expired_sessions": []
+        },
+        {
+            "label": "Hybrid",
+            "session_groups": [],
+            "finished_sessions": [],
+            "aborted_sessions": [],
+            "expired_sessions": []
+        },
+        {
+            "label": "Hybrid",
+            "session_groups": [],
+            "finished_sessions": [],
+            "aborted_sessions": [],
+            "expired_sessions": []
+        },
+        {
+            "label": "Hybrid",
+            "session_groups": [],
+            "finished_sessions": [],
+            "aborted_sessions": [],
+            "expired_sessions": []
+        },
+        {
+            "label": "Hybrid",
+            "session_groups": [],
+            "finished_sessions": [],
+            "aborted_sessions": [],
+            "expired_sessions": []
+        },
+        {
+            "label": "Hybrid",
+            "session_groups": [],
+            "finished_sessions": [],
+            "aborted_sessions": [],
+            "expired_sessions": []
+        },
+        {
+            "label": "Human",
+            "session_groups": [],
+            "finished_sessions": [],
+            "aborted_sessions": [],
+            "expired_sessions": []
+        },
+        {
+            "label": "Hybrid",
+            "session_groups": [],
+            "finished_sessions": [],
+            "aborted_sessions": [],
+            "expired_sessions": []
+        },
+        {
+            "label": "Human",
+            "session_groups": [],
+            "finished_sessions": [],
+            "aborted_sessions": [],
+            "expired_sessions": []
+        },
+        {
+            "label": "Human",
+            "session_groups": [],
+            "finished_sessions": [],
+            "aborted_sessions": [],
+            "expired_sessions": []
+        },
+        {
+            "label": "Hybrid",
+            "session_groups": [],
+            "finished_sessions": [],
+            "aborted_sessions": [],
+            "expired_sessions": []
+        },
+        {
+            "label": "Algorithm",
+            "session_groups": [],
+            "finished_sessions": [],
+            "aborted_sessions": [],
+            "expired_sessions": []
+        },
+        {
+            "label": "Algorithm",
+            "session_groups": [],
+            "finished_sessions": [],
+            "aborted_sessions": [],
+            "expired_sessions": []
+        },
+        {
+            "label": "Human",
+            "session_groups": [],
+            "finished_sessions": [],
+            "aborted_sessions": [],
+            "expired_sessions": []
+        },
+        {
+            "label": "Algorithm",
+            "session_groups": [],
+            "finished_sessions": [],
+            "aborted_sessions": [],
+            "expired_sessions": []
+        },
+        {
+            "label": "Human",
+            "session_groups": [],
+            "finished_sessions": [],
+            "aborted_sessions": [],
+            "expired_sessions": []
+        },
+        {
+            "label": "Hybrid",
+            "session_groups": [],
+            "finished_sessions": [],
+            "aborted_sessions": [],
+            "expired_sessions": []
+        },
+        {
+            "label": "Human",
+            "session_groups": [],
+            "finished_sessions": [],
+            "aborted_sessions": [],
+            "expired_sessions": []
+        },
+        {
+            "label": "Hybrid",
+            "session_groups": [],
+            "finished_sessions": [],
+            "aborted_sessions": [],
+            "expired_sessions": []
+        },
+        {
+            "label": "Human",
+            "session_groups": [],
+            "finished_sessions": [],
+            "aborted_sessions": [],
+            "expired_sessions": []
+        },
+        {
+            "label": "Hybrid",
+            "session_groups": [],
+            "finished_sessions": [],
+            "aborted_sessions": [],
+            "expired_sessions": []
+        },
+        {
+            "label": "Algorithm",
+            "session_groups": [],
+            "finished_sessions": [],
+            "aborted_sessions": [],
+            "expired_sessions": []
+        },
+        {
+            "label": "Hybrid",
+            "session_groups": [],
+            "finished_sessions": [],
+            "aborted_sessions": [],
+            "expired_sessions": []
+        },
+        {
+            "label": "Algorithm",
+            "session_groups": [],
+            "finished_sessions": [],
+            "aborted_sessions": [],
+            "expired_sessions": []
+        },
+        {
+            "label": "Algorithm",
+            "session_groups": [],
+            "finished_sessions": [],
+            "aborted_sessions": [],
+            "expired_sessions": []
+        },
+        {
+            "label": "Human",
+            "session_groups": [],
+            "finished_sessions": [],
+            "aborted_sessions": [],
+            "expired_sessions": []
+        },
+        {
+            "label": "Human",
+            "session_groups": [],
+            "finished_sessions": [],
+            "aborted_sessions": [],
+            "expired_sessions": []
+        },
+        {
+            "label": "Hybrid",
+            "session_groups": [],
+            "finished_sessions": [],
+            "aborted_sessions": [],
+            "expired_sessions": []
+        },
+        {
+            "label": "Hybrid",
+            "session_groups": [],
+            "finished_sessions": [],
+            "aborted_sessions": [],
+            "expired_sessions": []
+        },
+        {
+            "label": "Hybrid",
+            "session_groups": [],
+            "finished_sessions": [],
+            "aborted_sessions": [],
+            "expired_sessions": []
+        },
+        {
+            "label": "Human",
+            "session_groups": [],
+            "finished_sessions": [],
+            "aborted_sessions": [],
+            "expired_sessions": []
+        },
+        {
+            "label": "Hybrid",
+            "session_groups": [],
+            "finished_sessions": [],
+            "aborted_sessions": [],
+            "expired_sessions": []
+        },
+        {
+            "label": "Algorithm",
+            "session_groups": [],
+            "finished_sessions": [],
+            "aborted_sessions": [],
+            "expired_sessions": []
+        },
+        {
+            "label": "Hybrid",
+            "session_groups": [],
+            "finished_sessions": [],
+            "aborted_sessions": [],
+            "expired_sessions": []
+        },
+        {
+            "label": "Human",
+            "session_groups": [],
+            "finished_sessions": [],
+            "aborted_sessions": [],
+            "expired_sessions": []
+        },
+        {
+            "label": "Algorithm",
+            "session_groups": [],
+            "finished_sessions": [],
+            "aborted_sessions": [],
+            "expired_sessions": []
+        },
+        {
+            "label": "Hybrid",
+            "session_groups": [],
+            "finished_sessions": [],
+            "aborted_sessions": [],
+            "expired_sessions": []
+        },
+        {
+            "label": "Hybrid",
+            "session_groups": [],
+            "finished_sessions": [],
+            "aborted_sessions": [],
+            "expired_sessions": []
+        },
+        {
+            "label": "Human",
+            "session_groups": [],
+            "finished_sessions": [],
+            "aborted_sessions": [],
+            "expired_sessions": []
+        },
+        {
+            "label": "Hybrid",
+            "session_groups": [],
+            "finished_sessions": [],
+            "aborted_sessions": [],
+            "expired_sessions": []
+        },
+        {
+            "label": "Hybrid",
+            "session_groups": [],
+            "finished_sessions": [],
+            "aborted_sessions": [],
+            "expired_sessions": []
+        },
+        {
+            "label": "Hybrid",
+            "session_groups": [],
+            "finished_sessions": [],
+            "aborted_sessions": [],
+            "expired_sessions": []
+        },
+        {
+            "label": "Algorithm",
+            "session_groups": [],
+            "finished_sessions": [],
+            "aborted_sessions": [],
+            "expired_sessions": []
+        },
+        {
+            "label": "Hybrid",
+            "session_groups": [],
+            "finished_sessions": [],
+            "aborted_sessions": [],
+            "expired_sessions": []
+        },
+        {
+            "label": "Human",
+            "session_groups": [],
+            "finished_sessions": [],
+            "aborted_sessions": [],
+            "expired_sessions": []
+        },
+        {
+            "label": "Algorithm",
+            "session_groups": [],
+            "finished_sessions": [],
+            "aborted_sessions": [],
+            "expired_sessions": []
+        },
+        {
+            "label": "Human",
+            "session_groups": [],
+            "finished_sessions": [],
+            "aborted_sessions": [],
+            "expired_sessions": []
+        },
+        {
+            "label": "Hybrid",
+            "session_groups": [],
+            "finished_sessions": [],
+            "aborted_sessions": [],
+            "expired_sessions": []
+        },
+        {
+            "label": "Hybrid",
+            "session_groups": [],
+            "finished_sessions": [],
+            "aborted_sessions": [],
+            "expired_sessions": []
+        },
+        {
+            "label": "Human",
+            "session_groups": [],
+            "finished_sessions": [],
+            "aborted_sessions": [],
+            "expired_sessions": []
+        },
+        {
+            "label": "Algorithm",
+            "session_groups": [],
+            "finished_sessions": [],
+            "aborted_sessions": [],
+            "expired_sessions": []
+        },
+        {
+            "label": "Hybrid",
+            "session_groups": [],
+            "finished_sessions": [],
+            "aborted_sessions": [],
+            "expired_sessions": []
+        },
+        {
+            "label": "Hybrid",
+            "session_groups": [],
+            "finished_sessions": [],
+            "aborted_sessions": [],
+            "expired_sessions": []
+        },
+        {
+            "label": "Human",
+            "session_groups": [],
+            "finished_sessions": [],
+            "aborted_sessions": [],
+            "expired_sessions": []
+        },
+        {
+            "label": "Hybrid",
+            "session_groups": [],
+            "finished_sessions": [],
+            "aborted_sessions": [],
+            "expired_sessions": []
+        }
+    ],
+    "busy": false,
+    "additional_info": {
+        "random_seed": 1715269434.025235
+    }
+}
